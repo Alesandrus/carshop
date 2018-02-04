@@ -5,8 +5,12 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import ru.treejoy.dao.UserDAO;
 import ru.treejoy.dao.daofactory.HibernateDAOFactory;
+import ru.treejoy.exceptions.CreateEmailException;
+import ru.treejoy.exceptions.CreateLoginException;
 import ru.treejoy.model.User;
 
+import javax.persistence.Query;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -33,9 +37,25 @@ public class HibernateUserDAO extends UserDAO {
      * @param entity пользователь.
      */
     @Override
-    public void create(User entity) {
+    public void create(User entity) throws CreateLoginException, CreateEmailException {
         Session session = factory.getSessionFactory().openSession();
         session.beginTransaction();
+        Query query = session.createQuery("SELECT u from User u WHERE login=:login OR email=:email");
+        query.setParameter("login", entity.getLogin());
+        query.setParameter("email", entity.getEmail());
+        List<User> users = query.getResultList();
+        for (User user : users) {
+            if (user.getLogin().equals(entity.getLogin())) {
+                session.getTransaction().commit();
+                session.close();
+                throw new CreateLoginException();
+            }
+            if (user.getEmail().equals(entity.getEmail())) {
+                session.getTransaction().commit();
+                session.close();
+                throw new CreateEmailException();
+            }
+        }
         session.save(entity);
         session.getTransaction().commit();
         session.close();
@@ -102,5 +122,21 @@ public class HibernateUserDAO extends UserDAO {
         session.remove(entity);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public User validate(String login, String password) {
+        Session session = factory.getSessionFactory().openSession();
+        session.beginTransaction();
+        List users = session
+                .createQuery(String.format("from User where login='%s' and password='%s'", login, password))
+                .getResultList();
+        User user = null;
+        if (!users.isEmpty()) {
+            user = (User) users.get(0);
+        }
+        session.getTransaction().commit();
+        session.close();
+        return user;
     }
 }

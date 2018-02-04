@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cars")
+@Table(name = "car_ads")
 public class CarAd extends Ad {
     public CarAd() {
     }
@@ -41,6 +41,9 @@ public class CarAd extends Ad {
 
     @Column(name = "kilometrage", nullable = false)
     private int kilometrage;
+
+    @Column(name = "power", nullable = false)
+    private int power;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "wheel_drive", nullable = false)
@@ -100,5 +103,13 @@ public class CarAd extends Ad {
 
     public void setWheelDrive(WheelDrive wheelDrive) {
         this.wheelDrive = wheelDrive;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
     }
 }

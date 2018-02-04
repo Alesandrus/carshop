@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public abstract class Ad implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
@@ -53,6 +54,13 @@ public abstract class Ad implements Serializable {
 
     @Column(name = "description", length = 700)
     private String description;
+
+    /**
+     * Время создания задания.
+     */
+    @Column(name = "creation_time")
+    @org.hibernate.annotations.CreationTimestamp
+    private Timestamp created;
 
     public Long getId() {
         return id;
@@ -108,5 +116,13 @@ public abstract class Ad implements Serializable {
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 }

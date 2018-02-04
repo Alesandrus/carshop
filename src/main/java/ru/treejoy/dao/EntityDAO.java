@@ -1,5 +1,8 @@
 package ru.treejoy.dao;
 
+import ru.treejoy.exceptions.CreateEmailException;
+import ru.treejoy.exceptions.CreateLoginException;
+
 import java.util.List;
 
 /**
@@ -16,7 +19,7 @@ public interface EntityDAO<E> {
      *
      * @param entity сущность.
      */
-    void create(E entity);
+    void create(E entity) throws Exception;
 
     /**
      * Получение всех сущностей.
