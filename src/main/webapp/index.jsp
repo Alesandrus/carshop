@@ -11,8 +11,9 @@
             <jsp:include page="WEB-INF/views/HeaderLogin.jsp"/>
         </div>
         <div align="center">
-            <table id="adlist">
+            <table id="ads">
             </table>
         </div>
+    <script type="text/javascript" src="scripts/getallads.js"></script>
     </body>
 </html>

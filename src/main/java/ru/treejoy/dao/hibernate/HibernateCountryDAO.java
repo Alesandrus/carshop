@@ -5,8 +5,10 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import ru.treejoy.dao.CountryDAO;
 import ru.treejoy.dao.daofactory.HibernateDAOFactory;
+import ru.treejoy.model.geo.City;
 import ru.treejoy.model.geo.Country;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -100,5 +102,23 @@ public class HibernateCountryDAO extends CountryDAO {
         session.remove(entity);
         session.getTransaction().commit();
         session.close();
+    }
+
+    /**
+     * Получить список городов одной страны.
+     *
+     * @param id страны.
+     * @return список городов.
+     */
+    @Override
+    public List<City> getCities(long id) {
+        Session session = factory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM City WHERE country_id =:id");
+        query.setParameter("id", id);
+        List<City> cities = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return cities;
     }
 }

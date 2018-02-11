@@ -11,12 +11,23 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+/**
+ * Слушатель сессии.
+ *
+ * @author Alexander Ivanov
+ * @version 1.0
+ * @since 11.02.2018
+ */
 public class SessionListener implements HttpSessionListener {
     /**
      * Логгер.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Сохранение в сессии значений типов кузова, мотора, трансмиссий, приводов.
+     * @param se событие связанной с сессией.
+     */
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();

@@ -56,7 +56,16 @@ public abstract class CarAdDAO implements EntityDAO<CarAd> {
     /**
      * Обновить статус объявления о продаже авто.
      *
-     * @param item объявление о продаже авто.
+     * @param id     объявление о продаже авто.
+     * @param status объявления.
      */
-    public abstract void updateStatus(CarAd item);
+    public abstract void updateStatus(long id, boolean status);
+
+    /**
+     * Получить все объявления одного пользователя.
+     *
+     * @param id пользователя.
+     * @return список объявлений.
+     */
+    public abstract List<CarAd> getAllById(long id);
 }

@@ -1,34 +1,36 @@
-package ru.treejoy.servlets;
+package ru.treejoy.servlets.brands;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.treejoy.dao.UserDAO;
+import ru.treejoy.dao.BrandDAO;
 import ru.treejoy.dao.daofactory.DAOFactory;
-import ru.treejoy.model.User;
+import ru.treejoy.model.brands.Brand;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Сервлет, отвечающий за аутентификацию пользователя.
+ * Сервлет, отвечающий за получение всех брендов.
  *
  * @author Alexander Ivanov
  * @version 1.0
  * @since 11.02.2018
  */
-public class LogIn extends HttpServlet {
+public class GetBrands extends HttpServlet {
     /**
      * Логгер.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
     /**
-     * Аутентификация пользователя.
+     * Отправка JSON со списком брендов.
      *
      * @param req  запрос.
      * @param resp ответ.
@@ -37,22 +39,17 @@ public class LogIn extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        List<Brand> brands = new ArrayList<>();
         int factoryID = (Integer) getServletContext().getAttribute("factoryID");
         DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
-        User user = null;
         if (daoFactory != null) {
-            UserDAO userDAO = daoFactory.getUserDAO();
-            user = userDAO.getByLoginAndPassword(login, password);
-            session.setAttribute("user", user);
+            BrandDAO brandDAO = daoFactory.getBrandDAO();
+            brands = brandDAO.getAll();
         }
-        if (user == null) {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/Notfound.jsp");
-            dispatcher.forward(req, resp);
-        } else {
-            resp.sendRedirect(req.getContextPath());
-        }
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        PrintWriter writer = resp.getWriter();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(writer, brands);
     }
 }

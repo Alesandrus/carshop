@@ -35,15 +35,6 @@
     </servlet-mapping>
 
     <servlet>
-    <servlet-name>GetBrands</servlet-name>
-    <servlet-class>ru.treejoy.servlets.GetBrands</servlet-class>
-</servlet>
-    <servlet-mapping>
-        <servlet-name>GetBrands</servlet-name>
-        <url-pattern>/getbrands</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>SignUp</servlet-name>
         <servlet-class>ru.treejoy.servlets.SignUp</servlet-class>
     </servlet>
@@ -59,5 +50,77 @@
     <servlet-mapping>
         <servlet-name>CreateCarAd</servlet-name>
         <url-pattern>/createcarad</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCountries</servlet-name>
+        <servlet-class>ru.treejoy.servlets.geo.GetCountries</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCountries</servlet-name>
+        <url-pattern>/getcountries</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCities</servlet-name>
+        <servlet-class>ru.treejoy.servlets.geo.GetCities</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCities</servlet-name>
+        <url-pattern>/getcities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetBrands</servlet-name>
+        <servlet-class>ru.treejoy.servlets.brands.GetBrands</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetBrands</servlet-name>
+        <url-pattern>/getbrands</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetModels</servlet-name>
+        <servlet-class>ru.treejoy.servlets.brands.GetModels</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetModels</servlet-name>
+        <url-pattern>/getmodels</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllAds</servlet-name>
+        <servlet-class>ru.treejoy.servlets.GetAllAds</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllAds</servlet-name>
+        <url-pattern>/getallads</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdInfo</servlet-name>
+        <servlet-class>ru.treejoy.servlets.AddInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdInfo</servlet-name>
+        <url-pattern>/getad</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Account</servlet-name>
+        <servlet-class>ru.treejoy.servlets.Account</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Account</servlet-name>
+        <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IsSaleStatus</servlet-name>
+        <servlet-class>ru.treejoy.servlets.SetSale</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IsSaleStatus</servlet-name>
+        <url-pattern>/setsale</url-pattern>
     </servlet-mapping>
 </web-app>

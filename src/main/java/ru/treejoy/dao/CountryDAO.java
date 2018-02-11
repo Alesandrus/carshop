@@ -1,5 +1,6 @@
 package ru.treejoy.dao;
 
+import ru.treejoy.model.geo.City;
 import ru.treejoy.model.geo.Country;
 
 import java.util.List;
@@ -52,4 +53,12 @@ public abstract class CountryDAO implements EntityDAO<Country> {
      */
     @Override
     public abstract void delete(Country entity);
+
+    /**
+     * Получить список всех городов одной страны.
+     *
+     * @param id страны.
+     * @return список городов.
+     */
+    public abstract List<City> getCities(long id);
 }

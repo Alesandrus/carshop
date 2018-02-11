@@ -7,6 +7,7 @@ import ru.treejoy.dao.CarAdDAO;
 import ru.treejoy.dao.daofactory.HibernateDAOFactory;
 import ru.treejoy.model.ad.CarAd;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -50,7 +51,7 @@ public class HibernateCarAdDAO extends CarAdDAO {
     public List<CarAd> getAll() {
         Session session = factory.getSessionFactory().openSession();
         session.beginTransaction();
-        List<CarAd> items = session.createQuery("from CarAd").list();
+        List<CarAd> items = session.createQuery("from CarAd ORDER BY created").list();
         session.getTransaction().commit();
         session.close();
         return items;
@@ -116,18 +117,34 @@ public class HibernateCarAdDAO extends CarAdDAO {
     /**
      * Обновить статус автомобильного объявления.
      *
-     * @param carAd автомобильное объявление.
+     * @param id автомобильного объявления.
      */
     @Override
-    public void updateStatus(CarAd carAd) {
+    public void updateStatus(long id, boolean status) {
         Session session = factory.getSessionFactory().openSession();
         session.beginTransaction();
-        CarAd adFromDB = session.get(CarAd.class, carAd.getId());
-        if (carAd.isStatus() != adFromDB.isStatus()) {
-            adFromDB.setStatus(carAd.isStatus());
-            session.update(adFromDB);
-        }
+        CarAd carAd = session.get(CarAd.class, id);
+        carAd.setStatus(status);
+        session.update(carAd);
         session.getTransaction().commit();
         session.close();
+    }
+
+    /**
+     * Получить все объявления одного пользователя.
+     *
+     * @param id пользователя.
+     * @return список объявления пользователя.
+     */
+    @Override
+    public List<CarAd> getAllById(long id) {
+        Session session = factory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from CarAd WHERE user_id =:id ORDER BY created");
+        query.setParameter("id", id);
+        List<CarAd> ads = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return ads;
     }
 }

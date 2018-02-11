@@ -1,7 +1,5 @@
 package ru.treejoy.dao;
 
-import ru.treejoy.exceptions.CreateEmailException;
-import ru.treejoy.exceptions.CreateLoginException;
 import ru.treejoy.model.User;
 
 import java.util.List;
@@ -55,6 +53,12 @@ public abstract class UserDAO implements EntityDAO<User> {
     @Override
     public abstract void delete(User entity);
 
-
-    public abstract User validate(String login, String password);
+    /**
+     * Получить пользователя по логину и паролю.
+     *
+     * @param login    логин.
+     * @param password пароль.
+     * @return пользователя.
+     */
+    public abstract User getByLoginAndPassword(String login, String password);
 }

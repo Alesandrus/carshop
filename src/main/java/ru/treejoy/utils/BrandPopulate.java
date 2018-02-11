@@ -6,7 +6,17 @@ import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.brands.Brand;
 import ru.treejoy.model.brands.Model;
 
+/**
+ * Класс для наполнения брендами и моделей базы данных с помощью хайбернейт.
+ *
+ * @author Alexander Ivanov
+ * @version 1.0
+ * @since 11.02.2018
+ */
 public class BrandPopulate {
+    /**
+     * Заполнение базы даннх.
+     */
     private static void populate() {
         DAOFactory daoFactory = DAOFactory.getDAOFactory(1);
         BrandDAO brandDAO = daoFactory.getBrandDAO();
@@ -62,6 +72,11 @@ public class BrandPopulate {
         daoFactory.closeFactory();
     }
 
+    /**
+     * Мэйн.
+     *
+     * @param args .
+     */
     public static void main(String[] args) {
         populate();
     }

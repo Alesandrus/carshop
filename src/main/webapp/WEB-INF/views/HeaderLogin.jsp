@@ -22,7 +22,8 @@
     <c:otherwise>
         <p>Здравствуйте, ${sessionScope.user.name}</p>
         <p>
-            <a href="createcarad">Подать объявление</a> <jsp:include page="Logout.jsp"/>
+            <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="account">Личный кабинет</a>
+            <jsp:include page="Logout.jsp"/>
         </p>
     </c:otherwise>
 </c:choose>

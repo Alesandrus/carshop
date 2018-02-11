@@ -1,23 +1,21 @@
 package ru.treejoy.dao;
 
-import ru.treejoy.exceptions.CreateEmailException;
-import ru.treejoy.exceptions.CreateLoginException;
-
 import java.util.List;
 
 /**
  * Интерфейс сущности.
  *
+ * @param <E> element.
  * @author Alexander Ivanov
  * @version 1.0
  * @since 31.01.2018
- * @param <E> element.
  */
 public interface EntityDAO<E> {
     /**
      * Создание сущности.
      *
      * @param entity сущность.
+     * @throws Exception .
      */
     void create(E entity) throws Exception;
 

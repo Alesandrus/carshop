@@ -10,7 +10,6 @@ import ru.treejoy.exceptions.CreateLoginException;
 import ru.treejoy.model.User;
 
 import javax.persistence.Query;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -124,8 +123,15 @@ public class HibernateUserDAO extends UserDAO {
         session.close();
     }
 
+    /**
+     * Получение пользователя по логину и паролю.
+     *
+     * @param login    логин.
+     * @param password пароль.
+     * @return пользователя.
+     */
     @Override
-    public User validate(String login, String password) {
+    public User getByLoginAndPassword(String login, String password) {
         Session session = factory.getSessionFactory().openSession();
         session.beginTransaction();
         List users = session

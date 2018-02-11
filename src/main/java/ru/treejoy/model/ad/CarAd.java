@@ -14,101 +14,215 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Сущность, обозначающая автомобильное объявление.
+ *
+ * @author Alexander Ivanov
+ * @version 1.0
+ * @since 11.02.2018
+ */
 @Entity
 @Table(name = "car_ads")
 public class CarAd extends Ad {
+    /**
+     * Конструктор по умолчанию.
+     */
     public CarAd() {
     }
 
+    /**
+     * Модель автомобиля.
+     */
     @ManyToOne
     @JoinColumn(name = "model_id", nullable = false)
     private Model model;
 
+    /**
+     * Трансмиссия.
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "transmission", nullable = false)
     private Transmission transmission;
 
+    /**
+     * Двигатель.
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "motor", nullable = false)
     private Motor motor;
 
+    /**
+     * Кузов.
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "body", nullable = false)
     private Body body;
 
+    /**
+     * Год производства.
+     */
     @Column(name = "year_of_manufacture", nullable = false)
     private int yearOfManufacture;
 
+    /**
+     * Пробег.
+     */
     @Column(name = "kilometrage", nullable = false)
     private int kilometrage;
 
+    /**
+     * Мощность.
+     */
     @Column(name = "power", nullable = false)
     private int power;
 
+    /**
+     * Привод.
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "wheel_drive", nullable = false)
     private WheelDrive wheelDrive;
 
+    /**
+     * Геттер модели.
+     *
+     * @return модель.
+     */
     public Model getModel() {
         return model;
     }
 
+    /**
+     * Сеттер модели.
+     *
+     * @param model .
+     */
     public void setModel(Model model) {
         this.model = model;
     }
 
+    /**
+     * Геттер трансмиссии.
+     *
+     * @return трансмиссия.
+     */
     public Transmission getTransmission() {
         return transmission;
     }
 
+    /**
+     * Сеттер трансмиссии.
+     *
+     * @param transmission .
+     */
     public void setTransmission(Transmission transmission) {
         this.transmission = transmission;
     }
 
+    /**
+     * Геттре двигателя.
+     *
+     * @return двигатель.
+     */
     public Motor getMotor() {
         return motor;
     }
 
+    /**
+     * Сеттре двигателя.
+     *
+     * @param motor .
+     */
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
 
+    /**
+     * Геттер кузова.
+     *
+     * @return кузов.
+     */
     public Body getBody() {
         return body;
     }
 
+    /**
+     * Сеттер кузова.
+     *
+     * @param body .
+     */
     public void setBody(Body body) {
         this.body = body;
     }
 
+    /**
+     * Геттер года производства.
+     *
+     * @return год производства.
+     */
     public int getYearOfManufacture() {
         return yearOfManufacture;
     }
 
+    /**
+     * Сеттер года производства.
+     *
+     * @param yearOfManufacture .
+     */
     public void setYearOfManufacture(int yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
     }
 
+    /**
+     * Геттер пробега.
+     *
+     * @return пробег.
+     */
     public int getKilometrage() {
         return kilometrage;
     }
 
+    /**
+     * Сеттер пробег.
+     *
+     * @param kilometrage .
+     */
     public void setKilometrage(int kilometrage) {
         this.kilometrage = kilometrage;
     }
 
+    /**
+     * Геттер привода.
+     *
+     * @return привод.
+     */
     public WheelDrive getWheelDrive() {
         return wheelDrive;
     }
 
+    /**
+     * Сеттер привода.
+     *
+     * @param wheelDrive .
+     */
     public void setWheelDrive(WheelDrive wheelDrive) {
         this.wheelDrive = wheelDrive;
     }
 
+    /**
+     * Геттер мощности.
+     *
+     * @return мощность.
+     */
     public int getPower() {
         return power;
     }
 
+    /**
+     * Сеттер мощности.
+     *
+     * @param power .
+     */
     public void setPower(int power) {
         this.power = power;
     }

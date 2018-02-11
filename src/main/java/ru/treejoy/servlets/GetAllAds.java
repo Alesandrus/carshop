@@ -1,11 +1,11 @@
 package ru.treejoy.servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.treejoy.dao.BrandDAO;
+import ru.treejoy.dao.CarAdDAO;
 import ru.treejoy.dao.daofactory.DAOFactory;
-import ru.treejoy.model.brands.Brand;
-import ru.treejoy.utils.Parser;
+import ru.treejoy.model.ad.CarAd;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,35 +16,40 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetBrands extends HttpServlet {
+/**
+ * Сервлет, отвечающий за получение всех объявления.
+ *
+ * @author Alexander Ivanov
+ * @version 1.0
+ * @since 11.02.2018
+ */
+public class GetAllAds extends HttpServlet {
     /**
      * Логгер.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Отправка JSON со списком всех объявлений.
+     *
+     * @param req  запрос.
+     * @param resp ответ.
+     * @throws ServletException .
+     * @throws IOException      .
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Brand> brands = new ArrayList<>();
-        int factoryID = (Integer) getServletContext().getAttribute("factoryID");
+        Integer factoryID = (Integer) getServletContext().getAttribute("factoryID");
         DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
+        List<CarAd> ads = new ArrayList<>();
         if (daoFactory != null) {
-            BrandDAO brandDAO = daoFactory.getBrandDAO();
-            brands = brandDAO.getAll();
+            CarAdDAO carAdDAO = daoFactory.getCarAdDAO();
+            ads = carAdDAO.getAll();
         }
-        StringBuilder builder = new StringBuilder();
-        builder.append("[");
-        for (Brand brand : brands) {
-            builder.append(Parser.brandToJson(brand));
-            builder.append(", ");
-        }
-        if (brands.size() > 0) {
-            builder.delete(builder.lastIndexOf(","), builder.length());
-        }
-        builder.append("]");
-        String json = builder.toString();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter writer = resp.getWriter();
-        writer.print(json);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(writer, ads);
     }
 }

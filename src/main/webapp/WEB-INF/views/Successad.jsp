@@ -6,8 +6,8 @@
     </head>
     <body>
         <div align="center">
-            <h2>Пользователь успешно создан</h2>
-            <jsp:include page="BackToMain.jsp"/>
+            <h2>Объявление успешно подано</h2>
+            <jsp:include page="BackToMain.jsp" />
         </div>
     </body>
 </html>

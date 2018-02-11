@@ -6,7 +6,9 @@ import org.hibernate.Session;
 import ru.treejoy.dao.BrandDAO;
 import ru.treejoy.dao.daofactory.HibernateDAOFactory;
 import ru.treejoy.model.brands.Brand;
+import ru.treejoy.model.brands.Model;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -100,5 +102,23 @@ public class HibernateBrandDAO extends BrandDAO {
         session.remove(entity);
         session.getTransaction().commit();
         session.close();
+    }
+
+    /**
+     * Получить все модели одного бренда.
+     *
+     * @param id бренда.
+     * @return список моделей.
+     */
+    @Override
+    public List<Model> getModels(long id) {
+        Session session = factory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Model WHERE brand_id =:id");
+        query.setParameter("id", id);
+        List<Model> cities = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return cities;
     }
 }

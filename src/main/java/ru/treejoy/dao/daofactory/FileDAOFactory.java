@@ -2,7 +2,12 @@ package ru.treejoy.dao.daofactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.treejoy.dao.*;
+import ru.treejoy.dao.BrandDAO;
+import ru.treejoy.dao.CarAdDAO;
+import ru.treejoy.dao.CityDAO;
+import ru.treejoy.dao.CountryDAO;
+import ru.treejoy.dao.ModelDAO;
+import ru.treejoy.dao.UserDAO;
 
 /**
  * ДАО-фабрика для работы с файловой системой.

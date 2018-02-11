@@ -1,6 +1,7 @@
 package ru.treejoy.dao;
 
 import ru.treejoy.model.brands.Brand;
+import ru.treejoy.model.brands.Model;
 
 import java.util.List;
 
@@ -52,4 +53,12 @@ public abstract class BrandDAO implements EntityDAO<Brand> {
      */
     @Override
     public abstract void delete(Brand entity);
+
+    /**
+     * Получение списка моделей одной страны.
+     *
+     * @param id страны.
+     * @return список моделей.
+     */
+    public abstract List<Model> getModels(long id);
 }

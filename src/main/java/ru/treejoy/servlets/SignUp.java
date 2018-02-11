@@ -15,18 +15,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Сервлет, отвечающий за регистрацию пользователя.
+ *
+ * @author Alexander Ivanov
+ * @version 1.0
+ * @since 11.02.2018
+ */
 public class SignUp extends HttpServlet {
     /**
      * Логгер.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Перенаправление запроса на страницу регистрации.
+     *
+     * @param req  запрос.
+     * @param resp ответ.
+     * @throws ServletException .
+     * @throws IOException      .
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/SignUp.jsp");
         dispatcher.forward(req, resp);
     }
 
+    /**
+     * Регистрация пользователя.
+     *
+     * @param req  запрос.
+     * @param resp ответ.
+     * @throws ServletException .
+     * @throws IOException      .
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");

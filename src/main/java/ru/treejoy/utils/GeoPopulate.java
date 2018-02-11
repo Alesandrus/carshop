@@ -5,12 +5,18 @@ import ru.treejoy.dao.CountryDAO;
 import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.geo.City;
 import ru.treejoy.model.geo.Country;
-import ru.treejoy.model.parts.Body;
 
-import java.util.Arrays;
-import java.util.Locale;
-
+/**
+ * Класс для наполнения городами и странами базы данных с помощью хайбернейт.
+ *
+ * @author Alexander Ivanov
+ * @version 1.0
+ * @since 11.02.2018
+ */
 public class GeoPopulate {
+    /**
+     * Заполнение базы даннх.
+     */
     private static void populate() {
         DAOFactory daoFactory = DAOFactory.getDAOFactory(1);
         CityDAO cityDAO = daoFactory.getCityDAO();
@@ -61,13 +67,12 @@ public class GeoPopulate {
         daoFactory.closeFactory();
     }
 
+    /**
+     * Мэйн.
+     *
+     * @param args .
+     */
     public static void main(String[] args) {
-        //populate();
-        Body[] bodies = Body.values();
-        String[] bodyList = new String[bodies.length];
-        for (int i = 0; i < bodies.length; i++) {
-            bodyList[i] = bodies[i].toString().toLowerCase(Locale.ENGLISH);
-        }
-        System.out.println(Arrays.toString(bodyList));
+        populate();
     }
 }
