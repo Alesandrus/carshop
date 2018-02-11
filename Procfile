@@ -1,0 +1,1 @@
+web: java -jar target/carshop-1.0-SNAPSHOT.war
