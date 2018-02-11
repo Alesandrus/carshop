@@ -16,7 +16,7 @@
             </table>
         </form>
         <p>
-            <a href="createcarad">Подать объявление</a> <a href="signup">Зарегистрироваться</a>
+            <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="signup">Зарегистрироваться</a>
         </p>
     </c:when>
     <c:otherwise>
