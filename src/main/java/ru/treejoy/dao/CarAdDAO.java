@@ -68,4 +68,15 @@ public abstract class CarAdDAO implements EntityDAO<CarAd> {
      * @return список объявлений.
      */
     public abstract List<CarAd> getAllById(long id);
+
+    /**
+     * Получить список объявлений, удовлетворяющих условиям.
+     *
+     * @param brandID      ID бренда.
+     * @param modelID      ID модели.
+     * @param onlyWithFoto только с фото.
+     * @param today        за сегодня.
+     * @return список объявлений.
+     */
+    public abstract List<CarAd> getAllFromFilter(long brandID, long modelID, boolean onlyWithFoto, boolean today);
 }

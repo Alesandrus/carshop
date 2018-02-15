@@ -84,7 +84,7 @@ public abstract class Ad implements Serializable {
     /**
      * Описание объявления.
      */
-    @Column(name = "description", length = 1500)
+    @Column(name = "description", length = 3000)
     private String description;
 
     /**

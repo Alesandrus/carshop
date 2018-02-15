@@ -2,6 +2,7 @@ package ru.treejoy.dao.hibernate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Filter;
 import org.hibernate.Session;
 import ru.treejoy.dao.CarAdDAO;
 import ru.treejoy.dao.daofactory.HibernateDAOFactory;
@@ -146,5 +147,37 @@ public class HibernateCarAdDAO extends CarAdDAO {
         session.getTransaction().commit();
         session.close();
         return ads;
+    }
+
+    /**
+     * Получить список объявлений, удовлетворяющих условиям.
+     *
+     * @param brandID      ID бренда.
+     * @param modelID      ID модели.
+     * @param onlyWithFoto только с фото.
+     * @param today        за сегодня.
+     * @return список объявлений.
+     */
+    @Override
+    public List<CarAd> getAllFromFilter(long brandID, long modelID, boolean onlyWithFoto, boolean today) {
+        Session session = factory.getSessionFactory().openSession();
+        session.beginTransaction();
+        if (brandID != 0 && modelID == 0) {
+            Filter filter = session.enableFilter("limitByBrand");
+            filter.setParameter("brandID", brandID);
+        } else if (modelID != 0) {
+            Filter filter = session.enableFilter("limitByModel");
+            filter.setParameter("modelID", modelID);
+        }
+        if (onlyWithFoto) {
+            session.enableFilter("limitByImage");
+        }
+        if (today) {
+            session.enableFilter("limitToDay");
+        }
+        List<CarAd> items = session.createQuery("from CarAd ORDER BY created").list();
+        session.getTransaction().commit();
+        session.close();
+        return items;
     }
 }

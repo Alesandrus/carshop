@@ -1,5 +1,9 @@
 package ru.treejoy.model.ad;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.FilterDefs;
+import org.hibernate.annotations.ParamDef;
 import ru.treejoy.model.brands.Model;
 import ru.treejoy.model.parts.Body;
 import ru.treejoy.model.parts.Motor;
@@ -22,6 +26,18 @@ import javax.persistence.Table;
  * @since 11.02.2018
  */
 @Entity
+@FilterDefs({
+        @FilterDef(name = "limitByImage"),
+        @FilterDef(name = "limitByBrand", parameters = {@ParamDef(name = "brandID", type = "long")}),
+        @FilterDef(name = "limitByModel", parameters = {@ParamDef(name = "modelID", type = "long")}),
+        @FilterDef(name = "limitToDay")
+})
+
+@Filter(name = "limitByImage", condition = "id IN (SELECT images.ad_id FROM images)")
+@Filter(name = "limitByBrand", condition = "model_id IN "
+        + "(SELECT models.model_id FROM models WHERE models.brand_id = :brandID)")
+@Filter(name = "limitByModel", condition = "model_id = :modelID")
+@Filter(name = "limitToDay", condition = "current_date = DATE(creation_time)")
 @Table(name = "car_ads")
 public class CarAd extends Ad {
     /**

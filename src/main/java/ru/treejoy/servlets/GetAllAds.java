@@ -38,13 +38,35 @@ public class GetAllAds extends HttpServlet {
      * @throws IOException      .
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String brand = req.getParameter("brand");
+        String model = req.getParameter("model");
+        String foto = req.getParameter("foto");
+        String today = req.getParameter("today");
+
+        long brandID = 0;
+        if (brand != null && !brand.isEmpty()) {
+            brandID = Long.parseLong(brand);
+        }
+        long modelID = 0;
+        if (model != null && !model.isEmpty()) {
+            modelID = Long.parseLong(model);
+        }
+        boolean onlyWithFoto = false;
+        if (foto != null && foto.equals("on")) {
+            onlyWithFoto = true;
+        }
+        boolean isToday = false;
+        if (today != null && today.equals("on")) {
+            isToday = true;
+        }
+
         Integer factoryID = (Integer) getServletContext().getAttribute("factoryID");
         DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
         List<CarAd> ads = new ArrayList<>();
         if (daoFactory != null) {
             CarAdDAO carAdDAO = daoFactory.getCarAdDAO();
-            ads = carAdDAO.getAll();
+            ads = carAdDAO.getAllFromFilter(brandID, modelID, onlyWithFoto, isToday);
         }
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");

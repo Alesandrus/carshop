@@ -39,18 +39,20 @@ public class GetModels extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long countryID = Long.parseLong(req.getParameter("brand"));
-        Integer factoryID = (Integer) getServletContext().getAttribute("factoryID");
-        DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
-        List<Model> models = new ArrayList<>();
-        if (daoFactory != null) {
-            BrandDAO brandDAO = daoFactory.getBrandDAO();
-            models = brandDAO.getModels(countryID);
+        if (!req.getParameter("brand").isEmpty()) {
+            Long brandID = Long.parseLong(req.getParameter("brand"));
+            Integer factoryID = (Integer) getServletContext().getAttribute("factoryID");
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
+            List<Model> models = new ArrayList<>();
+            if (daoFactory != null) {
+                BrandDAO brandDAO = daoFactory.getBrandDAO();
+                models = brandDAO.getModels(brandID);
+            }
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            PrintWriter writer = resp.getWriter();
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(writer, models);
         }
-        resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-        PrintWriter writer = resp.getWriter();
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(writer, models);
     }
 }
