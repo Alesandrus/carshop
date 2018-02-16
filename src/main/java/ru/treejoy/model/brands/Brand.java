@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Сущность, обозначающая бренд.
@@ -101,5 +102,33 @@ public class Brand {
      */
     public void setModels(List<Model> models) {
         this.models = models;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     * @param o other object.
+     * @return if this object is the same as the obj argument.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Brand brand = (Brand) o;
+        return Objects.equals(id, brand.id)
+                && Objects.equals(name, brand.name);
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name);
     }
 }

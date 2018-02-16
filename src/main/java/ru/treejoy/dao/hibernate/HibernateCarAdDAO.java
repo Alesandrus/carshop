@@ -138,7 +138,7 @@ public class HibernateCarAdDAO extends CarAdDAO {
      * @return список объявления пользователя.
      */
     @Override
-    public List<CarAd> getAllById(long id) {
+    public List<CarAd> getAllByUserId(long id) {
         Session session = factory.getSessionFactory().openSession();
         session.beginTransaction();
         Query query = session.createQuery("from CarAd WHERE user_id =:id ORDER BY created");

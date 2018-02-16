@@ -70,7 +70,7 @@ public class Account extends HttpServlet {
             DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
             if (daoFactory != null) {
                 CarAdDAO carAdDAO = daoFactory.getCarAdDAO();
-                List<CarAd> ads = carAdDAO.getAllById(id);
+                List<CarAd> ads = carAdDAO.getAllByUserId(id);
                 ObjectMapper mapper = new ObjectMapper();
                 PrintWriter writer = resp.getWriter();
                 mapper.writeValue(writer, ads);

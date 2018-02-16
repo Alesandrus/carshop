@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Сущность, обозначающая страну.
@@ -101,5 +102,33 @@ public class Country {
      */
     public void setCities(List<City> cities) {
         this.cities = cities;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     * @param o other object.
+     * @return if this object is the same as the obj argument.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Country country = (Country) o;
+        return Objects.equals(id, country.id)
+                && Objects.equals(name, country.name);
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name);
     }
 }

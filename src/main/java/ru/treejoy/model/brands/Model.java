@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Сущность, обозначающая модель автомобиля.
@@ -61,6 +62,7 @@ public class Model {
 
     /**
      * Геттер ID.
+     *
      * @return ID.
      */
     public Long getId() {
@@ -69,6 +71,7 @@ public class Model {
 
     /**
      * Сеттер ID.
+     *
      * @param id .
      */
     public void setId(Long id) {
@@ -77,6 +80,7 @@ public class Model {
 
     /**
      * Геттер названия.
+     *
      * @return название.
      */
     public String getName() {
@@ -85,6 +89,7 @@ public class Model {
 
     /**
      * Сеттер названия.
+     *
      * @param name .
      */
     public void setName(String name) {
@@ -93,6 +98,7 @@ public class Model {
 
     /**
      * Геттер бренда.
+     *
      * @return бренд.
      */
     public Brand getBrand() {
@@ -101,6 +107,7 @@ public class Model {
 
     /**
      * Сеттер бренда.
+     *
      * @param brand .
      */
     public void setBrand(Brand brand) {
@@ -109,9 +116,38 @@ public class Model {
 
     /**
      * Геттер списка объявлений.
+     *
      * @return список объявлений.
      */
     public List<CarAd> getCarAd() {
         return carAd;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     * @param o other object.
+     * @return if this object is the same as the obj argument.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Model model = (Model) o;
+        return Objects.equals(id, model.id)
+                && Objects.equals(name, model.name);
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name);
     }
 }

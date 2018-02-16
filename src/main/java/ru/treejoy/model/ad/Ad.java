@@ -21,6 +21,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Абстрактный сущность, обозначающая объявление.
@@ -236,5 +237,31 @@ public abstract class Ad implements Serializable {
      */
     public void setCreated(Timestamp created) {
         this.created = created;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     * @param o other object.
+     * @return if this object is the same as the obj argument.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Ad ad = (Ad) o;
+        return Objects.equals(id, ad.id);
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
