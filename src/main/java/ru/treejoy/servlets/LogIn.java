@@ -52,7 +52,11 @@ public class LogIn extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/Notfound.jsp");
             dispatcher.forward(req, resp);
         } else {
-            resp.sendRedirect("/");
+            if (req.getContextPath().isEmpty()) {
+                resp.sendRedirect("/");
+            } else {
+                resp.sendRedirect(req.getContextPath());
+            }
         }
     }
 }

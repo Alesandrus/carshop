@@ -33,11 +33,13 @@ function call() {
                 var p1 = document.createElement("p");
                 p1.innerHTML = ad.price + " руб.";
                 textcell.appendChild(p1);
-                var p2 = document.createElement("p");
+                //var p2 = document.createElement("p");
+                var br = document.createElement("br");
+                p1.appendChild(br);
                 var creationTime = new Date(ad.created);
-                p2.innerHTML = creationTime.toDateString() + " " + creationTime.getHours() + ":"
-                    + creationTime.getMinutes();
-                textcell.appendChild(p2);
+                p1.append(creationTime.toDateString() + " " + creationTime.getHours() + ":"
+                    + creationTime.getMinutes());
+                //textcell.appendChild(p2);
             }
         }
     });
@@ -91,11 +93,11 @@ function addAllAds() {
                 var p1 = document.createElement("p");
                 p1.innerHTML = ad.price + " руб.";
                 textcell.appendChild(p1);
-                var p2 = document.createElement("p");
+                var br = document.createElement("br");
+                p1.appendChild(br);
                 var creationTime = new Date(ad.created);
-                p2.innerHTML = creationTime.toDateString() + " " + creationTime.getHours() + ":"
-                    + creationTime.getMinutes();
-                textcell.appendChild(p2);
+                p1.append(creationTime.toDateString() + " " + creationTime.getHours() + ":"
+                    + creationTime.getMinutes());
             }
         }
     }
