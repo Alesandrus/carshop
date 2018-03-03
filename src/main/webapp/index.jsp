@@ -27,8 +27,11 @@
                     </a><span style="padding-left:10px;"></span><input type="submit" value="фильтровать">
                 </form>
                 <br>
-                <table id="ads">
+                <div class="container" id="as">
+                    <table class="table" id="ads">
                 </table>
+                </div>
+
             </div>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

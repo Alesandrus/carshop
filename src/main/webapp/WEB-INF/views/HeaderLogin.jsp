@@ -1,32 +1,49 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:choose>
-    <c:when test="${sessionScope.user eq null}">
-        <div class="row">
-            <div class="col-md" align="right">
-                <form name="log" method="post" action=login>
-                    <table>
-                        <tr>
-                            <td>Логин</td><td><input type="text" name="login"></td>
-                        </tr>
-                        <tr>
-                            <td>Пароль</td><td><input type="password" name="password"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center"><input type="submit" value="Войти"></td>
-                        </tr>
-                    </table>
-                </form>
-                <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="signup">Зарегистрироваться</a>
-            </div>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div class="row">
-            <div class="col-md" align="right">
-                Здравствуйте, ${sessionScope.user.name}<jsp:include page="Logout.jsp"/>
-                <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="account">Личный кабинет</a>
-            </div>
-        </div>
-    </c:otherwise>
-</c:choose>
+<div class="row align-items-center">
+    <div class="col-md-2" align="center">
+        <jsp:include page="Logo.jsp"/>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3 text-primary text-center">
+        <h1>My Car Shop</h1>
+    </div>
+    <c:choose>
+        <c:when test="${sessionScope.user eq null}">
+                <div class="col-md-5 text-md-right text-sm-center">
+                    <form name="log" method="post" action=login>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-sm-right">
+                                    <label for="log">Логин</label>
+                                </div>
+                                <div class="col text-sm-left">
+                                    <input type="text" name="login" id="log">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-sm-right">
+                                    <label for="pas">Пароль</label>
+                                </div>
+                                <div class="col text-sm-left">
+                                    <input type="password" name="password" id="pas">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="submit" class="btn btn-primary btn-sm" value="Войти">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="signup">Зарегистрироваться</a>
+                </div>
+        </c:when>
+        <c:otherwise>
+                <div class="col-md text-md-right text-sm-center">
+                    Здравствуйте, ${sessionScope.user.name}<jsp:include page="Logout.jsp"/>
+                    <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="account">Личный кабинет</a>
+                </div>
+        </c:otherwise>
+    </c:choose>
+</div>
