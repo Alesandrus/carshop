@@ -9,6 +9,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script type='text/javascript' src='scripts/jquery-3.2.1.min.js'></script>
         <title>Car shop</title>
+        <style type="text/css">
+            .bottomborder {
+                border-bottom: 1px solid lightskyblue;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid">
@@ -27,11 +34,15 @@
                     </a><span style="padding-left:10px;"></span><input type="submit" value="фильтровать">
                 </form>
                 <br>
-                <div class="container" id="as">
-                    <table class="table" id="ads">
-                </table>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="container" id="ads">
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
                 </div>
-
             </div>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

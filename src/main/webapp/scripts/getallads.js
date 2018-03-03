@@ -7,16 +7,19 @@ function call() {
         success: function(data) {
             var adlist = data;
             var table = document.getElementById("ads");
-            for (var j = table.rows.length - 1; j >= 0; j--) {
-                table.deleteRow(j);
+            while (table.firstChild) {
+                table.removeChild(table.firstChild);
             }
             for (var i = 0; i < adlist.length; i++) {
                 var ad = adlist[i];
                 var fotolist = ad.images;
                 var mainfoto = fotolist[0];
-                var row = table.insertRow(i);
+                var row = document.createElement("div");
+                row.className += " row bottomborder";
+                table.appendChild(row);
 
-                var fotocell = row.insertCell(0);
+                var fotocell = document.createElement("div");
+                fotocell.className += " col-12 col-sm";
                 var foto = document.createElement("img");
                 if (mainfoto !== undefined) {
                     foto.src = "images/small/" + mainfoto;
@@ -24,8 +27,10 @@ function call() {
                     foto.src = "images/small/nofoto.jpg"
                 }
                 fotocell.appendChild(foto);
+                row.appendChild(fotocell);
 
-                var textcell = row.insertCell(1);
+                var textcell = document.createElement("div");
+                textcell.className += " col-12 col-sm";
                 var modelhref = document.createElement("a");
                 modelhref.href = "getad?id=" + ad.id;
                 modelhref.innerHTML = ad.model.brand.name + " " + ad.model.name + " " + ad.yearOfManufacture;
@@ -33,13 +38,12 @@ function call() {
                 var p1 = document.createElement("p");
                 p1.innerHTML = ad.price + " руб.";
                 textcell.appendChild(p1);
-                //var p2 = document.createElement("p");
                 var br = document.createElement("br");
                 p1.appendChild(br);
                 var creationTime = new Date(ad.created);
                 p1.append(creationTime.toDateString() + " " + creationTime.getHours() + ":"
                     + creationTime.getMinutes());
-                //textcell.appendChild(p2);
+                row.appendChild(textcell);
             }
         }
     });
@@ -74,9 +78,12 @@ function addAllAds() {
                 var ad = adlist[i];
                 var fotolist = ad.images;
                 var mainfoto = fotolist[0];
-                var row = table.insertRow(i);
+                var row = document.createElement("div");
+                row.className += " row bottomborder";
+                table.appendChild(row);
 
-                var fotocell = row.insertCell(0);
+                var fotocell = document.createElement("div");
+                fotocell.className += " col-12 col-sm";
                 var foto = document.createElement("img");
                 if (mainfoto !== undefined) {
                     foto.src = "images/small/" + mainfoto;
@@ -84,8 +91,10 @@ function addAllAds() {
                     foto.src = "images/small/nofoto.jpg"
                 }
                 fotocell.appendChild(foto);
+                row.appendChild(fotocell);
 
-                var textcell = row.insertCell(1);
+                var textcell = document.createElement("div");
+                textcell.className += " col-12 col-sm";
                 var modelhref = document.createElement("a");
                 modelhref.href = "getad?id=" + ad.id;
                 modelhref.innerHTML = ad.model.brand.name + " " + ad.model.name + " " + ad.yearOfManufacture;
@@ -98,6 +107,7 @@ function addAllAds() {
                 var creationTime = new Date(ad.created);
                 p1.append(creationTime.toDateString() + " " + creationTime.getHours() + ":"
                     + creationTime.getMinutes());
+                row.appendChild(textcell);
             }
         }
     }
