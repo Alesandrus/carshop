@@ -10,27 +10,27 @@
     </div>
     <c:choose>
         <c:when test="${sessionScope.user eq null}">
-                <div class="col-md-5 text-md-right text-sm-center">
+                <div class="col-md-5 text-md-right text-sm-center text-center">
                     <form name="log" method="post" action=login>
                         <div class="container">
                             <div class="row">
-                                <div class="col text-sm-right">
+                                <div class="col-12 col-sm text-sm-right text-center">
                                     <label for="log">Логин</label>
                                 </div>
-                                <div class="col text-sm-left">
+                                <div class="col-12 col-sm text-sm-left text-center">
                                     <input type="text" name="login" id="log">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col text-sm-right">
+                                <div class="col-12 col-sm text-sm-right text-center">
                                     <label for="pas">Пароль</label>
                                 </div>
-                                <div class="col text-sm-left">
+                                <div class="col-12 col-sm text-sm-left text-center">
                                     <input type="password" name="password" id="pas">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col text-center">
                                     <input type="submit" class="btn btn-primary btn-sm" value="Войти">
                                 </div>
                             </div>
