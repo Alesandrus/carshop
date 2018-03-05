@@ -19,18 +19,19 @@ function call() {
                 table.appendChild(row);
 
                 var fotocell = document.createElement("div");
-                fotocell.className += " col-12 col-sm";
+                fotocell.className += " col-12 col-sm text-center";
                 var foto = document.createElement("img");
                 if (mainfoto !== undefined) {
                     foto.src = "images/small/" + mainfoto;
                 } else {
                     foto.src = "images/small/nofoto.jpg"
                 }
+                foto.className += " rounded";
                 fotocell.appendChild(foto);
                 row.appendChild(fotocell);
 
                 var textcell = document.createElement("div");
-                textcell.className += " col-12 col-sm";
+                textcell.className += " col-12 col-sm text-center text-sm-left";
                 var modelhref = document.createElement("a");
                 modelhref.href = "getad?id=" + ad.id;
                 modelhref.innerHTML = ad.model.brand.name + " " + ad.model.name + " " + ad.yearOfManufacture;
@@ -83,18 +84,19 @@ function addAllAds() {
                 table.appendChild(row);
 
                 var fotocell = document.createElement("div");
-                fotocell.className += " col-12 col-sm";
+                fotocell.className += " col-12 col-sm text-center";
                 var foto = document.createElement("img");
                 if (mainfoto !== undefined) {
                     foto.src = "images/small/" + mainfoto;
                 } else {
                     foto.src = "images/small/nofoto.jpg"
                 }
+                foto.className += " rounded";
                 fotocell.appendChild(foto);
                 row.appendChild(fotocell);
 
                 var textcell = document.createElement("div");
-                textcell.className += " col-12 col-sm";
+                textcell.className += " col-12 col-sm text-center text-sm-left";
                 var modelhref = document.createElement("a");
                 modelhref.href = "getad?id=" + ad.id;
                 modelhref.innerHTML = ad.model.brand.name + " " + ad.model.name + " " + ad.yearOfManufacture;
