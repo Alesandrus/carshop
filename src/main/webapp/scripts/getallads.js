@@ -31,13 +31,13 @@ function call() {
                 row.appendChild(fotocell);
 
                 var textcell = document.createElement("div");
-                textcell.className += " col-12 col-sm text-center text-sm-left";
+                textcell.className += " col-12 col-sm text-center text-sm-left align-self-center";
                 var modelhref = document.createElement("a");
                 modelhref.href = "getad?id=" + ad.id;
                 modelhref.innerHTML = ad.model.brand.name + " " + ad.model.name + " " + ad.yearOfManufacture;
                 textcell.appendChild(modelhref);
                 var p1 = document.createElement("p");
-                p1.innerHTML = ad.price + " руб.";
+                p1.innerHTML = ad.price + " &#8381;";
                 textcell.appendChild(p1);
                 var br = document.createElement("br");
                 p1.appendChild(br);
@@ -96,13 +96,13 @@ function addAllAds() {
                 row.appendChild(fotocell);
 
                 var textcell = document.createElement("div");
-                textcell.className += " col-12 col-sm text-center text-sm-left";
+                textcell.className += " col-12 col-sm text-center text-sm-left align-self-center";
                 var modelhref = document.createElement("a");
                 modelhref.href = "getad?id=" + ad.id;
                 modelhref.innerHTML = ad.model.brand.name + " " + ad.model.name + " " + ad.yearOfManufacture;
                 textcell.appendChild(modelhref);
                 var p1 = document.createElement("p");
-                p1.innerHTML = ad.price + " руб.";
+                p1.innerHTML = ad.price + " &#8381;";
                 textcell.appendChild(p1);
                 var br = document.createElement("br");
                 p1.appendChild(br);
