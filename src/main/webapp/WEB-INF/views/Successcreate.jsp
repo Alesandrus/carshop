@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>User create</title>
+        <title>Вы зарегистрированы</title>
     </head>
     <body>
         <div align="center">
-            <h2>Пользователь успешно создан</h2>
+            <h2>Регистрация прошла успешно</h2>
             <jsp:include page="BackToMain.jsp"/>
         </div>
     </body>

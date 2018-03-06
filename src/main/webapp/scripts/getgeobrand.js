@@ -22,11 +22,13 @@ function addCountriesAndBrands() {
         if (requestBrand.readyState === 4 && requestBrand.status === 200) {
             var brands = JSON.parse(requestBrand.responseText);
             var sel = document.getElementById("brand");
-            for (var i = 0; i < brands.length; i++) {
-                var option = document.createElement("option");
-                option.value = brands[i].id;
-                option.text = brands[i].name;
-                sel.add(option);
+            if (sel != null) {
+                for (var i = 0; i < brands.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = brands[i].id;
+                    option.text = brands[i].name;
+                    sel.add(option);
+                }
             }
         }
     }
@@ -39,7 +41,10 @@ window.onload = addCountriesAndBrands;
 var countrySelect = document.getElementById("country");
 countrySelect.onchange = handleSelect;
 var brandSelect = document.getElementById("brand");
-brandSelect.onchange = handleSelectModel;
+if (brandSelect != null) {
+    brandSelect.onchange = handleSelectModel;
+}
+
 
 function handleSelect() {
     var countryElem = countrySelect.options[countrySelect.selectedIndex];

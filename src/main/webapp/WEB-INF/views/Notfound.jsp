@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Not found user</title>
+        <title>Пользователь не найден</title>
+        <link rel="icon" href="images/logo/logo.png" type="image/png">
     </head>
     <body>
         <div align="center">

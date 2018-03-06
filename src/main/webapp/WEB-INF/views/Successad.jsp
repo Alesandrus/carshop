@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>User create</title>
+        <title>Объявление подано</title>
     </head>
     <body>
         <div align="center">

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row align-items-center">
-    <div class="col-md-2" align="center">
+    <div class="col-md-2 align-self-start" align="center">
         <jsp:include page="Logo.jsp"/>
     </div>
     <div class="col-md-2"></div>
