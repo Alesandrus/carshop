@@ -26,7 +26,7 @@ function call() {
                 } else {
                     foto.src = "images/small/nofoto.jpg"
                 }
-                foto.className += " rounded";
+                foto.className += " rounded img-fluid";
                 fotocell.appendChild(foto);
                 row.appendChild(fotocell);
 
@@ -91,7 +91,7 @@ function addAllAds() {
                 } else {
                     foto.src = "images/small/nofoto.jpg"
                 }
-                foto.className += " rounded";
+                foto.className += " rounded img-fluid";
                 fotocell.appendChild(foto);
                 row.appendChild(fotocell);
 
