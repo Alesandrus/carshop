@@ -35,7 +35,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="country">Страна</label>
                                     <div class="col-md-3">
-                                        <select name="countries" id="country" class="form-control text-center" required>
+                                        <select name="countries" id="country" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                         </select>
                                     </div>
@@ -43,7 +43,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="city">Город</label>
                                     <div class="col-md-3">
-                                        <select name="cities" id="city" class="form-control text-center" required>
+                                        <select name="cities" id="city" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                         </select>
                                     </div>
@@ -56,7 +56,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="brand">Марка</label>
                                     <div class="col-md-3">
-                                        <select name="brands" id="brand" class="form-control text-center" required>
+                                        <select name="brands" id="brand" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                         </select>
                                     </div>
@@ -64,7 +64,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="model">Модель</label>
                                     <div class="col-md-3">
-                                        <select name="models" id="model" class="form-control text-center" required>
+                                        <select name="models" id="model" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                         </select>
                                     </div>
@@ -84,7 +84,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="body">Кузов</label>
                                     <div class="col-md-3">
-                                        <select name="bodies" id="body" class="form-control text-center" required>
+                                        <select name="bodies" id="body" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                             <c:forEach var="body" items="${sessionScope.bodies}">
                                                 <option value="${body}">${body}</option>
@@ -95,7 +95,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="motor">Тип двигателя</label>
                                     <div class="col-md-3">
-                                        <select name="motors" id="motor" class="form-control text-center" required>
+                                        <select name="motors" id="motor" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                             <c:forEach var="motor" items="${sessionScope.motors}">
                                                 <option value="${motor}">${motor}</option>
@@ -112,7 +112,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="transmission">Коробка передач</label>
                                     <div class="col-md-3">
-                                        <select name="transmissions" id="transmission" class="form-control text-center" required>
+                                        <select name="transmissions" id="transmission" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                             <c:forEach var="transmission" items="${sessionScope.transmissions}">
                                                 <option value="${transmission}">${transmission}</option>
@@ -123,7 +123,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label class="col-form-label col-md-3" for="drive">Привод</label>
                                     <div class="col-md-3">
-                                        <select name="drives" id="drive" class="form-control text-center" required>
+                                        <select name="drives" id="drive" class="form-control" style="text-align-last: center;" required>
                                             <option disabled selected value> -- select -- </option>
                                             <c:forEach var="drive" items="${sessionScope.drives}">
                                                 <option value="${drive}">${drive}</option>
@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <label class="col-md-3 col-form-label" for="photo">Загрузить фотографию (jpeg)</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <input type="file" class="form-control" id="photo" name="photo" multiple accept="image/jpeg">
                                     </div>
                                 </div>
