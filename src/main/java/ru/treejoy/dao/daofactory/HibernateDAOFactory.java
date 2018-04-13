@@ -2,14 +2,10 @@ package ru.treejoy.dao.daofactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import ru.treejoy.dao.hibernate.HibernateBrandDAO;
-import ru.treejoy.dao.hibernate.HibernateCarAdDAO;
-import ru.treejoy.dao.hibernate.HibernateCityDAO;
-import ru.treejoy.dao.hibernate.HibernateCountryDAO;
-import ru.treejoy.dao.hibernate.HibernateModelDAO;
-import ru.treejoy.dao.hibernate.HibernateUserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import ru.treejoy.dao.hibernate.*;
+import ru.treejoy.dao.services.*;
 
 /**
  * ДАО-фабрика для работы с базой данных с помощью Hibernate.
@@ -25,14 +21,33 @@ public class HibernateDAOFactory extends DAOFactory {
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
     /**
-     * Фабрика сессий Hibernate.
-     */
-    private SessionFactory sessionFactory;
-
-    /**
      * Синглтон текущего класса.
      */
     private static final HibernateDAOFactory FACTORY = new HibernateDAOFactory();
+
+    @Autowired
+    @Qualifier("brandService")
+    private BrandService hibernateBrandService;
+
+    @Autowired
+    @Qualifier("modelService")
+    private ModelService modelService;
+
+    @Autowired
+    @Qualifier("cityService")
+    private CityService cityService;
+
+    @Autowired
+    @Qualifier("countryService")
+    private CountryService countryService;
+
+    @Autowired
+    @Qualifier("userService")
+    private UserService userService;
+
+    @Autowired
+    @Qualifier("carAdService")
+    private CarAdService carAdService;
 
     /**
      * Приватный конструктор.
@@ -50,42 +65,23 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Конфигурирование hibernate, подключение к бд.
-     */
-    private void config() {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-    }
-
-    /**
-     * Получение SessionFactory.
-     *
-     * @return SessionFactory.
-     */
-    public SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            config();
-        }
-        return sessionFactory;
-    }
-
-    /**
      * Получение DAO для HibernateBrand.
      *
-     * @return HibernateBrandDAO.
+     * @return HibernateBrandService.
      */
     @Override
-    public HibernateBrandDAO getBrandDAO() {
-        return new HibernateBrandDAO();
+    public BrandService getBrandService() {
+        return hibernateBrandService;
     }
 
     /**
      * Получение DAO для HibernateCarAd.
      *
-     * @return HibernateCarAdDAO.
+     * @return HibernateCarAdService.
      */
     @Override
-    public HibernateCarAdDAO getCarAdDAO() {
-        return new HibernateCarAdDAO();
+    public CarAdService getCarAdService() {
+        return carAdService;
     }
 
     /**
@@ -94,47 +90,37 @@ public class HibernateDAOFactory extends DAOFactory {
      * @return HibernateCityAdDAO.
      */
     @Override
-    public HibernateCityDAO getCityDAO() {
-        return new HibernateCityDAO();
+    public CityService getCityService() {
+        return cityService;
     }
 
     /**
      * Получение DAO для HibernateCountry.
      *
-     * @return HibernateCountryDAO.
+     * @return HibernateCountryService.
      */
     @Override
-    public HibernateCountryDAO getCountryDAO() {
-        return new HibernateCountryDAO();
+    public CountryService getCountryService() {
+        return countryService;
     }
 
     /**
      * Получение DAO для HibernateModel.
      *
-     * @return HibernateModelDAO.
+     * @return HibernateModelService.
      */
     @Override
-    public HibernateModelDAO getModelDAO() {
-        return new HibernateModelDAO();
+    public ModelService getModelService() {
+        return modelService;
     }
 
     /**
      * Получение DAO для HibernateUser.
      *
-     * @return HibernateUserDAO.
+     * @return HibernateUserService.
      */
     @Override
-    public HibernateUserDAO getUserDAO() {
-        return new HibernateUserDAO();
-    }
-
-    /**
-     * Вызов метода disconnectDB() для завкрытия соединения.
-     */
-    @Override
-    public void closeFactory() {
-        if (sessionFactory != null) {
-            sessionFactory.close();
-        }
+    public UserService getUserService() {
+        return userService;
     }
 }

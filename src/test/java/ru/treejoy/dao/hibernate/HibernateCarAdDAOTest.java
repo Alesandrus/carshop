@@ -1,3 +1,4 @@
+/*
 package ru.treejoy.dao.hibernate;
 
 import org.apache.logging.log4j.LogManager;
@@ -5,12 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.treejoy.dao.BrandDAO;
-import ru.treejoy.dao.CarAdDAO;
-import ru.treejoy.dao.CityDAO;
-import ru.treejoy.dao.CountryDAO;
-import ru.treejoy.dao.ModelDAO;
-import ru.treejoy.dao.UserDAO;
+import ru.treejoy.dao.services.*;
 import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.User;
 import ru.treejoy.model.ad.CarAd;
@@ -34,152 +30,190 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+*/
 /**
- * Test HibernateCarAdDAO.
- */
+ * Test HibernateCarAdService.
+ *//*
+
 public class HibernateCarAdDAOTest {
-    /**
+    */
+/**
      * Логгер.
-     */
+     *//*
+
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
-    /**
+    */
+/**
      * DAOFactory.
-     */
+     *//*
+
     private static DAOFactory daoFactory;
 
-    /**
-     * CarAdDAO.
-     */
-    private static CarAdDAO carAdDAO;
+    */
+/**
+     * CarAdService.
+     *//*
 
-    /**
+    private static CarAdService carAdDAO;
+
+    */
+/**
      * Brand Ford.
-     */
+     *//*
+
     private static Brand ford = new Brand();
 
-    /**
+    */
+/**
      * Brand Toyota.
-     */
+     *//*
+
     private static Brand toyota = new Brand();
 
-    /**
+    */
+/**
      * Model Focus.
-     */
+     *//*
+
     private static Model focus = new Model();
 
-    /**
+    */
+/**
      * Model Mondeo.
-     */
+     *//*
+
     private static Model mondeo = new Model();
 
-    /**
+    */
+/**
      * Model Camry.
-     */
+     *//*
+
     private static Model camry = new Model();
 
-    /**
+    */
+/**
      * Country USA.
-     */
+     *//*
+
     private static Country usa = new Country();
 
-    /**
+    */
+/**
      * City Los Angeles.
-     */
+     *//*
+
     private static City losAngeles = new City();
 
-    /**
+    */
+/**
      * User creator.
-     */
+     *//*
+
     private static User user = new User();
 
-    /**
+    */
+/**
      * CarAd for Camry.
-     */
+     *//*
+
     private static CarAd camryAd = new CarAd();
 
-    /**
+    */
+/**
      * Получение DAOFactory, carAdDAO, заполнение брендов, моделей, создание пользователя, добавление объявления.
-     */
+     *//*
+
     @BeforeClass
     public static void setDAO() {
         Properties dataBaseProperties = new Properties();
-        try (InputStream in = HibernateBrandDAOTest.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = HibernateBrandServiceTest.class.getClassLoader().getResourceAsStream("app.properties")) {
             dataBaseProperties.load(in);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
         }
         int factoryID = Integer.parseInt(dataBaseProperties.getProperty("factory"));
         daoFactory = DAOFactory.getDAOFactory(factoryID);
-        carAdDAO = daoFactory.getCarAdDAO();
+        carAdDAO = daoFactory.getCarAdService();
         createBrandAndModel();
         createCountryAndCity();
         createUser();
         createSomeAdds();
     }
 
-    /**
+    */
+/**
      * Заполнение брендов и моделей.
-     */
+     *//*
+
     private static void createBrandAndModel() {
-        BrandDAO brandDAO = daoFactory.getBrandDAO();
+        BrandService brandService = daoFactory.getBrandService();
         ford.setName("Ford");
-        brandDAO.create(ford);
+        brandService.create(ford);
         toyota.setName("Toyota");
-        brandDAO.create(toyota);
-        ModelDAO modelDAO = daoFactory.getModelDAO();
+        brandService.create(toyota);
+        ModelService modelService = daoFactory.getModelService();
         focus.setName("Focus");
         focus.setBrand(ford);
-        modelDAO.create(focus);
+        modelService.create(focus);
         mondeo.setName("Mondeo");
         mondeo.setBrand(ford);
-        modelDAO.create(mondeo);
+        modelService.create(mondeo);
         camry.setName("Camry");
         camry.setBrand(toyota);
-        modelDAO.create(camry);
+        modelService.create(camry);
     }
 
-    /**
+    */
+/**
      * Удаление брендов и моделей.
-     */
+     *//*
+
     private static void deleteBrandAndModel() {
-        ModelDAO modelDAO = daoFactory.getModelDAO();
-        modelDAO.delete(camry);
-        modelDAO.delete(mondeo);
-        modelDAO.delete(focus);
-        BrandDAO brandDAO = daoFactory.getBrandDAO();
-        brandDAO.delete(ford);
-        brandDAO.delete(toyota);
+        ModelService modelService = daoFactory.getModelService();
+        modelService.delete(camry);
+        modelService.delete(mondeo);
+        modelService.delete(focus);
+        BrandService brandService = daoFactory.getBrandService();
+        brandService.delete(ford);
+        brandService.delete(toyota);
     }
 
-    /**
+    */
+/**
      * Заполнение стран и городов.
-     */
+     *//*
+
     private static void createCountryAndCity() {
-        CountryDAO countryDAO = daoFactory.getCountryDAO();
+        CountryService countryDAO = daoFactory.getCountryService();
         usa.setName("USA");
         countryDAO.create(usa);
-        CityDAO cityDAO = daoFactory.getCityDAO();
+        CityService cityDAO = daoFactory.getCityService();
         losAngeles.setName("Los Angeles");
         losAngeles.setCountry(usa);
         cityDAO.create(losAngeles);
     }
 
-    /**
+    */
+/**
      * Удаление стран и городов.
-     */
+     *//*
+
     private static void deleteCountryAndCity() {
-        CityDAO cityDAO = daoFactory.getCityDAO();
+        CityService cityDAO = daoFactory.getCityService();
         cityDAO.delete(losAngeles);
-        CountryDAO countryDAO = daoFactory.getCountryDAO();
+        CountryService countryDAO = daoFactory.getCountryService();
         countryDAO.delete(usa);
     }
 
-    /**
+    */
+/**
      * Создание пользователя.
-     */
+     *//*
+
     private static void createUser() {
-        UserDAO userDAO = daoFactory.getUserDAO();
+        UserService userDAO = daoFactory.getUserService();
         user.setLogin("login");
         user.setPassword("password");
         user.setName("Name");
@@ -192,17 +226,21 @@ public class HibernateCarAdDAOTest {
         }
     }
 
-    /**
+    */
+/**
      * Удаление пользователя.
-     */
+     *//*
+
     private static void deleteUser() {
-        UserDAO userDAO = daoFactory.getUserDAO();
+        UserService userDAO = daoFactory.getUserService();
         userDAO.delete(user);
     }
 
-    /**
+    */
+/**
      * Добавление объявления.
-     */
+     *//*
+
     private static void createSomeAdds() {
         camryAd.setModel(camry);
         camryAd.setCity(losAngeles);
@@ -220,18 +258,22 @@ public class HibernateCarAdDAOTest {
         carAdDAO.create(camryAd);
     }
 
-    /**
+    */
+/**
      * Удаление объявления.
-     */
+     *//*
+
     private static void deleteSomeAdds() {
         carAdDAO.delete(camryAd);
     }
 
-    /**
+    */
+/**
      * Метод по установке параметров объявления.
      *
      * @param carAd объявления.
-     */
+     *//*
+
     private void setCarAd(CarAd carAd) {
         carAd.setModel(focus);
         carAd.setCity(losAngeles);
@@ -249,9 +291,11 @@ public class HibernateCarAdDAOTest {
         carAd.setImages(Arrays.asList("Image1", "Image2"));
     }
 
-    /**
+    */
+/**
      * Очистка таблиц.
-     */
+     *//*
+
     @AfterClass
     public static void clear() {
         deleteSomeAdds();
@@ -260,9 +304,11 @@ public class HibernateCarAdDAOTest {
         deleteUser();
     }
 
-    /**
+    */
+/**
      * Тест создания объявления.
-     */
+     *//*
+
     @Test
     public void create() {
         CarAd carAd = new CarAd();
@@ -272,9 +318,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест получения всех объявлений.
-     */
+     *//*
+
     @Test
     public void getAll() {
         CarAd carAd = new CarAd();
@@ -284,9 +332,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест обновления объявления.
-     */
+     *//*
+
     @Test
     public void update() {
         CarAd carAd = new CarAd();
@@ -299,9 +349,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест удаления объявления.
-     */
+     *//*
+
     @Test
     public void delete() {
         CarAd carAd = new CarAd();
@@ -312,9 +364,11 @@ public class HibernateCarAdDAOTest {
         assertFalse(carAdDAO.getAll().contains(carAd));
     }
 
-    /**
+    */
+/**
      * Тест обновления статуса продажи объявления.
-     */
+     *//*
+
     @Test
     public void updateStatus() {
         CarAd carAd = new CarAd();
@@ -326,9 +380,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест получения всех объявлений одного пользователя.
-     */
+     *//*
+
     @Test
     public void getAllByUserId() {
         CarAd carAd = new CarAd();
@@ -338,9 +394,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест getAllFromFilter(). Получение всех Toyota.
-     */
+     *//*
+
     @Test
     public void getAllToyotaFromFilter() {
         CarAd carAd = new CarAd();
@@ -351,9 +409,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест getAllFromFilter(). Получение всех Ford Focus.
-     */
+     *//*
+
     @Test
     public void getAllFocusFromFilter() {
         CarAd carAd = new CarAd();
@@ -364,9 +424,11 @@ public class HibernateCarAdDAOTest {
         carAdDAO.delete(carAd);
     }
 
-    /**
+    */
+/**
      * Тест getAllFromFilter(). Получение объявлений, в которых есть фото.
-     */
+     *//*
+
     @Test
     public void getAllWithFotoFromFilter() {
         CarAd carAd = new CarAd();
@@ -376,4 +438,4 @@ public class HibernateCarAdDAOTest {
                 is(carAdDAO.getAllFromFilter(0, 0, true, false)));
         carAdDAO.delete(carAd);
     }
-}
+}*/

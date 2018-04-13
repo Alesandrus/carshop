@@ -1,13 +1,6 @@
 package ru.treejoy.dao.daofactory;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ru.treejoy.dao.BrandDAO;
-import ru.treejoy.dao.CarAdDAO;
-import ru.treejoy.dao.CityDAO;
-import ru.treejoy.dao.CountryDAO;
-import ru.treejoy.dao.ModelDAO;
-import ru.treejoy.dao.UserDAO;
+import ru.treejoy.dao.services.*;
 
 /**
  * Абстрактная ДАО-фабрика.
@@ -17,82 +10,46 @@ import ru.treejoy.dao.UserDAO;
  * @since 30.01.2018
  */
 public abstract class DAOFactory {
-    /**
-     * Логгер.
-     */
-    private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
-
-    /**
-     * Константа для подключения к базе данных Postgres.
-     */
-    public static final int HIBERNATE = 1;
-
-    /**
-     * Константа для подключения к файловой системе.
-     */
-    public static final int FILESYSTEM = 2;
 
     /**
      * Получение DAO для Brand.
      *
-     * @return BrandDAO.
+     * @return BrandService.
      */
-    public abstract BrandDAO getBrandDAO();
+    public abstract BrandService getBrandService();
 
     /**
      * Получение DAO для CarAd.
      *
-     * @return CarAdDAO.
+     * @return CarAdService.
      */
-    public abstract CarAdDAO getCarAdDAO();
+    public abstract CarAdService getCarAdService();
 
     /**
      * Получение DAO для City.
      *
-     * @return CityDAO.
+     * @return CityService.
      */
-    public abstract CityDAO getCityDAO();
+    public abstract CityService getCityService();
 
     /**
      * Получение DAO для Country.
      *
-     * @return CountryDAO.
+     * @return CountryService.
      */
-    public abstract CountryDAO getCountryDAO();
+    public abstract CountryService getCountryService();
 
     /**
      * Получение DAO для Model.
      *
-     * @return ModelDAO.
+     * @return ModelService.
      */
-    public abstract ModelDAO getModelDAO();
+    public abstract ModelService getModelService();
 
     /**
      * Получение DAO для User.
      *
-     * @return UserDAO.
+     * @return UserService.
      */
-    public abstract UserDAO getUserDAO();
-
-    /**
-     * Закрытие ресурсов.
-     */
-    public abstract void closeFactory();
-
-    /**
-     * Получение конкретной фабрики.
-     *
-     * @param whichFactory для опредения фабрики.
-     * @return DAOFactory.
-     */
-    public static DAOFactory getDAOFactory(int whichFactory) {
-        switch (whichFactory) {
-            case HIBERNATE:
-                return HibernateDAOFactory.getInstance();
-            case FILESYSTEM:
-                return FileDAOFactory.getInstance();
-            default:
-                return null;
-        }
-    }
+    public abstract UserService getUserService();
 }

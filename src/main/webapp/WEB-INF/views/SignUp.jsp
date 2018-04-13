@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="st" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +9,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="icon" href="images/logo/logo.png" type="image/png">
         <title>Регистрация</title>
+        <style type="text/css">
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid">
@@ -16,31 +23,36 @@
                 </div>
                 <div class="col-md-8 align-self-center">
                     <div class="container-fluid text-center">
-                        <form method="post" action=signup>
+                        <sf:form method="post" action="signup" modelAttribute="user">
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-sm-auto">
                                     <label for="login">Логин</label>
-                                    <input class="form-control" id="login" type="text" name="login" required>
+                                    <sf:input path="login" class="form-control" id="login" type="text" name="login"/>
+                                    <sf:errors path="login" cssClass="error" class="error"/>
                                 </div>
                                 <div class="form-group col-sm-auto">
                                     <label for="password">Пароль</label>
-                                    <input class="form-control" id="password" type="password" name="password" required>
+                                    <sf:input path="password" class="form-control" id="password" type="password" name="password"/>
+                                    <sf:errors path="password" cssClass="error" class="error"/>
                                 </div>
                             </div>
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-sm-auto">
                                     <label for="name">Имя</label>
-                                    <input class="form-control" id="name" type="text" name="name" required>
+                                    <sf:input path="name" class="form-control" id="name" type="text" name="name" />
+                                    <sf:errors path="name" cssClass="error" class="error"/>
                                 </div>
                                 <div class="form-group col-sm-auto">
                                     <label for="surname">Фамилия</label>
-                                    <input class="form-control" id="surname" type="text" name="surname" required>
+                                    <sf:input path="surname" class="form-control" id="surname" type="text" name="surname" />
+                                    <sf:errors path="surname" cssClass="error" class="error"/>
                                 </div>
                             </div>
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-sm-auto">
                                     <label for="email">Email</label>
-                                    <input class="form-control" id="email" type="email" name="email" required>
+                                    <sf:input path="email" class="form-control" id="email" type="email" name="email" />
+                                    <sf:errors path="email" cssClass="error" class="error"/>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -48,7 +60,7 @@
                                     <input class="btn btn-primary" type="submit" value="Зарегистрироваться">
                                 </div>
                             </div>
-                        </form>
+                        </sf:form>
                     </div>
                 </div>
                 <div class="col-md-2"></div>

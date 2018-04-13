@@ -2,12 +2,7 @@ package ru.treejoy.dao.daofactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.treejoy.dao.BrandDAO;
-import ru.treejoy.dao.CarAdDAO;
-import ru.treejoy.dao.CityDAO;
-import ru.treejoy.dao.CountryDAO;
-import ru.treejoy.dao.ModelDAO;
-import ru.treejoy.dao.UserDAO;
+import ru.treejoy.dao.services.*;
 
 /**
  * ДАО-фабрика для работы с файловой системой.
@@ -45,68 +40,60 @@ public class FileDAOFactory extends DAOFactory {
     /**
      * Получение DAO для Brand.
      *
-     * @return BrandDAO.
+     * @return BrandService.
      */
     @Override
-    public BrandDAO getBrandDAO() {
+    public BrandService getBrandService() {
         return null;
     }
 
     /**
      * Получение DAO для CarAd.
      *
-     * @return CarAdDAO.
+     * @return CarAdService.
      */
     @Override
-    public CarAdDAO getCarAdDAO() {
+    public CarAdService getCarAdService() {
         return null;
     }
 
     /**
      * Получение DAO для City.
      *
-     * @return CityDAO.
+     * @return CityService.
      */
     @Override
-    public CityDAO getCityDAO() {
+    public CityService getCityService() {
         return null;
     }
 
     /**
      * Получение DAO для Country.
      *
-     * @return CountryDAO.
+     * @return CountryService.
      */
     @Override
-    public CountryDAO getCountryDAO() {
+    public CountryService getCountryService() {
         return null;
     }
 
     /**
      * Получение DAO для Model.
      *
-     * @return ModelDAO.
+     * @return ModelService.
      */
     @Override
-    public ModelDAO getModelDAO() {
+    public ModelService getModelService() {
         return null;
     }
 
     /**
      * Получение DAO для User.
      *
-     * @return UserDAO.
+     * @return UserService.
      */
     @Override
-    public UserDAO getUserDAO() {
+    public UserService getUserService() {
         return null;
-    }
-
-    /**
-     * Закрытие ресурсов.
-     */
-    @Override
-    public void closeFactory() {
-        //close streams
     }
 }

@@ -1,3 +1,4 @@
+/*
 package ru.treejoy.dao.hibernate;
 
 import org.apache.logging.log4j.LogManager;
@@ -5,9 +6,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.treejoy.dao.BrandDAO;
-import ru.treejoy.dao.CityDAO;
-import ru.treejoy.dao.CountryDAO;
+import ru.treejoy.dao.services.CityService;
+import ru.treejoy.dao.services.CountryService;
 import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.geo.City;
 import ru.treejoy.model.geo.Country;
@@ -22,68 +22,86 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+*/
 /**
- * Test HibernateCityDAO.
- */
+ * Test HibernateCityService.
+ *//*
+
 public class HibernateCityDAOTest {
-    /**
+    */
+/**
      * Логгер.
-     */
+     *//*
+
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
-    /**
+    */
+/**
      * DAOFactory.
-     */
+     *//*
+
     private static DAOFactory daoFactory;
 
-    /**
-     * ModelDAO.
-     */
-    private static CityDAO cityDAO;
+    */
+/**
+     * ModelService.
+     *//*
 
-    /**
+    private static CityService cityDAO;
+
+    */
+/**
      * Бренд для автомобильных моделей.
-     */
+     *//*
+
     private static Country usa = new Country();
 
-    /**
+    */
+/**
      * Получение DAOFactory, cityDAO, добавление страны USA.
-     */
+     *//*
+
     @BeforeClass
     public static void setDAO() {
         Properties dataBaseProperties = new Properties();
-        try (InputStream in = HibernateBrandDAOTest.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = HibernateBrandServiceTest.class.getClassLoader().getResourceAsStream("app.properties")) {
             dataBaseProperties.load(in);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
         }
         int factoryID = Integer.parseInt(dataBaseProperties.getProperty("factory"));
         daoFactory = DAOFactory.getDAOFactory(factoryID);
-        cityDAO = daoFactory.getCityDAO();
+        cityDAO = daoFactory.getCityService();
         addCity();
     }
 
-    /**
+    */
+/**
      * Добавление бренда Ford.
-     */
+     *//*
+
     private static void addCity() {
-        CountryDAO countryDAO = daoFactory.getCountryDAO();
+        CountryService countryDAO = daoFactory.getCountryService();
         usa.setName("USA");
         countryDAO.create(usa);
     }
 
-    /**
+    */
+/**
      * Удаление USA.
-     */
+     *//*
+
     @AfterClass
     public static void clear() {
-        CountryDAO countryDAO = daoFactory.getCountryDAO();
+        CountryService countryDAO = daoFactory.getCountryService();
         countryDAO.delete(usa);
     }
 
-    /**
+    */
+/**
      * Тест создания города.
-     */
+     *//*
+
     @Test
     public void create() {
         City city = new City();
@@ -94,9 +112,11 @@ public class HibernateCityDAOTest {
         cityDAO.delete(city);
     }
 
-    /**
+    */
+/**
      * Тест получения всех городов.
-     */
+     *//*
+
     @Test
     public void getAll() {
         City newYork = new City();
@@ -112,9 +132,11 @@ public class HibernateCityDAOTest {
         cityDAO.delete(lasVegas);
     }
 
-    /**
+    */
+/**
      * Тест обновления города.
-     */
+     *//*
+
     @Test
     public void update() {
         City city = new City();
@@ -127,9 +149,11 @@ public class HibernateCityDAOTest {
         cityDAO.delete(city);
     }
 
-    /**
+    */
+/**
      * Тест удаления города.
-     */
+     *//*
+
     @Test
     public void delete() {
         City city = new City();
@@ -140,4 +164,4 @@ public class HibernateCityDAOTest {
         cityDAO.delete(city);
         assertFalse(cityDAO.getAll().contains(city));
     }
-}
+}*/

@@ -1,12 +1,12 @@
+/*
 package ru.treejoy.dao.hibernate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.treejoy.dao.CityDAO;
-import ru.treejoy.dao.CountryDAO;
+import ru.treejoy.dao.services.CityService;
+import ru.treejoy.dao.services.CountryService;
 import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.geo.City;
 import ru.treejoy.model.geo.Country;
@@ -21,50 +21,64 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+*/
 /**
- * Test HibernateCountryDAO.
- */
+ * Test HibernateCountryService.
+ *//*
+
 public class HibernateCountryDAOTest {
-    /**
+    */
+/**
      * Логгер.
-     */
+     *//*
+
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
-    /**
+    */
+/**
      * DAOFactory.
-     */
+     *//*
+
     private static DAOFactory daoFactory;
 
-    /**
-     * CountryDAO.
-     */
-    private static CountryDAO countryDAO;
+    */
+/**
+     * CountryService.
+     *//*
 
-    /**
-     * CityDAO.
-     */
-    private static CityDAO cityDAO;
+    private static CountryService countryDAO;
 
-    /**
+    */
+/**
+     * CityService.
+     *//*
+
+    private static CityService cityDAO;
+
+    */
+/**
      * Получение DAOFactory, countryDAO, cityDAO.
-     */
+     *//*
+
     @BeforeClass
     public static void setDAO() {
         Properties dataBaseProperties = new Properties();
-        try (InputStream in = HibernateBrandDAOTest.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = HibernateBrandServiceTest.class.getClassLoader().getResourceAsStream("app.properties")) {
             dataBaseProperties.load(in);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
         }
         int factoryID = Integer.parseInt(dataBaseProperties.getProperty("factory"));
         daoFactory = DAOFactory.getDAOFactory(factoryID);
-        countryDAO = daoFactory.getCountryDAO();
-        cityDAO = daoFactory.getCityDAO();
+        countryDAO = daoFactory.getCountryService();
+        cityDAO = daoFactory.getCityService();
     }
 
-    /**
+    */
+/**
      * Тест создания страны.
-     */
+     *//*
+
     @Test
     public void create() {
         Country usa = new Country();
@@ -74,9 +88,11 @@ public class HibernateCountryDAOTest {
         countryDAO.delete(usa);
     }
 
-    /**
+    */
+/**
      * Тест получения всех стран.
-     */
+     *//*
+
     @Test
     public void getAll() {
         Country usa = new Country();
@@ -92,9 +108,11 @@ public class HibernateCountryDAOTest {
         countryDAO.delete(germany);
     }
 
-    /**
+    */
+/**
      * Тест обновления страны.
-     */
+     *//*
+
     @Test
     public void update() {
         Country usa = new Country();
@@ -106,9 +124,11 @@ public class HibernateCountryDAOTest {
         countryDAO.delete(usa);
     }
 
-    /**
+    */
+/**
      * Тест удаления страны.
-     */
+     *//*
+
     @Test
     public void delete() {
         Country usa = new Country();
@@ -119,9 +139,11 @@ public class HibernateCountryDAOTest {
         assertFalse(countryDAO.getAll().contains(usa));
     }
 
-    /**
+    */
+/**
      * Тест получения всех городов одной страны.
-     */
+     *//*
+
     @Test
     public void getCities() {
         Country usa = new Country();
@@ -142,4 +164,4 @@ public class HibernateCountryDAOTest {
         cityDAO.delete(vashington);
         countryDAO.delete(usa);
     }
-}
+}*/

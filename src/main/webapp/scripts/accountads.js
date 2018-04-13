@@ -1,4 +1,4 @@
-function getAccountAds() {
+﻿function getAccountAds() {
     var request = new XMLHttpRequest();
     request.open("POST", "account", true);
     function process() {

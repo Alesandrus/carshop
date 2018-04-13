@@ -42,7 +42,7 @@
         <c:otherwise>
                 <div class="col-md text-md-right text-sm-center text-center">
                     Здравствуйте, ${sessionScope.user.name}<jsp:include page="Logout.jsp"/>
-                    <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="account">Личный кабинет</a>
+                    <a href="createcarad">Подать объявление</a><span style="padding-left:10px;"></span> <a href="account">Мои объявления</a>
                 </div>
         </c:otherwise>
     </c:choose>

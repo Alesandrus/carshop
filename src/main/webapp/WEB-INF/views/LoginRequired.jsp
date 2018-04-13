@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <title>Вы зарегистрированы</title>
+        <title>Необходимо залогиниться</title>
         <link rel="icon" href="images/logo/logo.png" type="image/png">
     </head>
     <body>
         <div class="container">
             <div class="col" align="center">
-                <h2>Регистрация прошла успешно</h2>
+                <h2>Чтобы подать объявление необходимо залогиниться</h2>
                 <jsp:include page="BackToMain.jsp"/>
             </div>
         </div>

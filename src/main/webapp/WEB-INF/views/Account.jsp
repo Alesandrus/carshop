@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col text-primary">
                         <h1>
-                            Личный кабинет
+                            Мои объявления
                         </h1>
                     </div>
                 </div>

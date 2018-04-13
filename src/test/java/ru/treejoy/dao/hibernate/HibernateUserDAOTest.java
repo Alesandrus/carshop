@@ -1,11 +1,11 @@
+/*
 package ru.treejoy.dao.hibernate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.treejoy.dao.UserDAO;
+import ru.treejoy.dao.services.UserService;
 import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.User;
 
@@ -19,44 +19,56 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+*/
 /**
- * Test HibernateUserDAO.
- */
+ * Test HibernateUserService.
+ *//*
+
 public class HibernateUserDAOTest {
-    /**
+    */
+/**
      * Логгер.
-     */
+     *//*
+
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
-    /**
+    */
+/**
      * DAOFactory.
-     */
+     *//*
+
     private static DAOFactory daoFactory;
 
-    /**
-     * UserDAO.
-     */
-    private static UserDAO userDAO;
+    */
+/**
+     * UserService.
+     *//*
 
-    /**
+    private static UserService userDAO;
+
+    */
+/**
      * Получение DAOFactory, userDAO.
-     */
+     *//*
+
     @BeforeClass
     public static void setDAO() {
         Properties dataBaseProperties = new Properties();
-        try (InputStream in = HibernateBrandDAOTest.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = HibernateBrandServiceTest.class.getClassLoader().getResourceAsStream("app.properties")) {
             dataBaseProperties.load(in);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
         }
         int factoryID = Integer.parseInt(dataBaseProperties.getProperty("factory"));
         daoFactory = DAOFactory.getDAOFactory(factoryID);
-        userDAO = daoFactory.getUserDAO();
+        userDAO = daoFactory.getUserService();
     }
 
-    /**
+    */
+/**
      * Тест создания пользователя.
-     */
+     *//*
+
     @Test
     public void create() {
         User user = new User();
@@ -74,9 +86,11 @@ public class HibernateUserDAOTest {
         userDAO.delete(user);
     }
 
-    /**
+    */
+/**
      * Тест получения всех пользователей.
-     */
+     *//*
+
     @Test
     public void getAll() {
         User firstUser = new User();
@@ -108,9 +122,11 @@ public class HibernateUserDAOTest {
         userDAO.delete(secondUser);
     }
 
-    /**
+    */
+/**
      * Тест обновления пользователя.
-     */
+     *//*
+
     @Test
     public void update() {
         User user = new User();
@@ -130,9 +146,11 @@ public class HibernateUserDAOTest {
         userDAO.delete(user);
     }
 
-    /**
+    */
+/**
      * Тест удаления пользователя.
-     */
+     *//*
+
     @Test
     public void delete() {
         User user = new User();
@@ -151,9 +169,11 @@ public class HibernateUserDAOTest {
         assertFalse(userDAO.getAll().contains(user));
     }
 
-    /**
+    */
+/**
      * Тест получения пользователя по логину и паролю.
-     */
+     *//*
+
     @Test
     public void getByLoginAndPassword() {
         User user = new User();
@@ -170,4 +190,4 @@ public class HibernateUserDAOTest {
         assertThat(user, is(userDAO.getByLoginAndPassword("login", "password")));
         userDAO.delete(user);
     }
-}
+}*/
