@@ -1,9 +1,14 @@
 package ru.treejoy.dao.daofactory;
 
-import ru.treejoy.dao.services.*;
+import ru.treejoy.dao.services.BrandService;
+import ru.treejoy.dao.services.CarAdService;
+import ru.treejoy.dao.services.CityService;
+import ru.treejoy.dao.services.CountryService;
+import ru.treejoy.dao.services.ModelService;
+import ru.treejoy.dao.services.UserService;
 
 /**
- * Абстрактная ДАО-фабрика.
+ * Abstract DAO-factory.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -12,42 +17,42 @@ import ru.treejoy.dao.services.*;
 public abstract class DAOFactory {
 
     /**
-     * Получение DAO для Brand.
+     * Getting BrandService.
      *
      * @return BrandService.
      */
     public abstract BrandService getBrandService();
 
     /**
-     * Получение DAO для CarAd.
+     * Getting CarAdService.
      *
      * @return CarAdService.
      */
     public abstract CarAdService getCarAdService();
 
     /**
-     * Получение DAO для City.
+     * Getting CityService.
      *
      * @return CityService.
      */
     public abstract CityService getCityService();
 
     /**
-     * Получение DAO для Country.
+     * Getting CountryService.
      *
      * @return CountryService.
      */
     public abstract CountryService getCountryService();
 
     /**
-     * Получение DAO для Model.
+     * Getting ModelService.
      *
      * @return ModelService.
      */
     public abstract ModelService getModelService();
 
     /**
-     * Получение DAO для User.
+     * Getting UserService.
      *
      * @return UserService.
      */

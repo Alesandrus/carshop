@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Сущность, обозначающая модель автомобиля.
+ * Entity representing car model.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -27,13 +27,13 @@ import java.util.Objects;
 @Table(name = "models")
 public class Model {
     /**
-     * Конструктор по умолчанию.
+     * Default constructor.
      */
     public Model() {
     }
 
     /**
-     * ID.
+     * Model ID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,27 +41,27 @@ public class Model {
     private Long id;
 
     /**
-     * Название модели.
+     * Model name.
      */
     @Column(name = "model", nullable = false)
     private String name;
 
     /**
-     * Бренд модели.
+     * Model brand.
      */
     @ManyToOne
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 
     /**
-     * Список автомобильных объявлений.
+     * Car ads list with this brand.
      */
     @OneToMany(mappedBy = "model")
     @JsonIgnore
     private List<CarAd> carAd = new ArrayList<>();
 
     /**
-     * Геттер ID.
+     * Getter for ID.
      *
      * @return ID.
      */
@@ -70,7 +70,7 @@ public class Model {
     }
 
     /**
-     * Сеттер ID.
+     * Setter for ID.
      *
      * @param id .
      */
@@ -79,16 +79,16 @@ public class Model {
     }
 
     /**
-     * Геттер названия.
+     * Getter for name.
      *
-     * @return название.
+     * @return name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Сеттер названия.
+     * Setter for name.
      *
      * @param name .
      */
@@ -97,16 +97,16 @@ public class Model {
     }
 
     /**
-     * Геттер бренда.
+     * Getter for brand.
      *
-     * @return бренд.
+     * @return brand.
      */
     public Brand getBrand() {
         return brand;
     }
 
     /**
-     * Сеттер бренда.
+     * Setter for brand.
      *
      * @param brand .
      */
@@ -115,9 +115,9 @@ public class Model {
     }
 
     /**
-     * Геттер списка объявлений.
+     * Getter for ads list.
      *
-     * @return список объявлений.
+     * @return ads list.
      */
     public List<CarAd> getCarAd() {
         return carAd;
@@ -125,6 +125,7 @@ public class Model {
 
     /**
      * Indicates whether some other object is "equal to" this one.
+     *
      * @param o other object.
      * @return if this object is the same as the obj argument.
      */
@@ -143,11 +144,11 @@ public class Model {
 
     /**
      * Returns a hash code value for the object.
+     *
      * @return a hash code value for this object.
      */
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name);
     }
 }

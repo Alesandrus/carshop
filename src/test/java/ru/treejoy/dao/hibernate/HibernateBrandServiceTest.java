@@ -1,84 +1,47 @@
-/*
 package ru.treejoy.dao.hibernate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.treejoy.dao.services.BrandService;
 import ru.treejoy.dao.services.ModelService;
-import ru.treejoy.dao.daofactory.DAOFactory;
 import ru.treejoy.model.brands.Brand;
 import ru.treejoy.model.brands.Model;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-*/
 /**
  * Test HibernateBrandService.
- *//*
+ */
 
 public class HibernateBrandServiceTest {
-    */
-/**
-     * Логгер.
-     *//*
 
+    /**
+     * Логгер.
+     */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
-    */
-/**
-     * DAOFactory.
-     *//*
-
-    private static DAOFactory daoFactory;
-
-    */
-/**
+    /**
      * BrandService.
-     *//*
-
+     */
+    @Autowired
     private static BrandService brandService;
 
-    */
-/**
+    /**
      * ModelService.
-     *//*
-
+     */
+    @Autowired
     private static ModelService modelService;
 
-    */
-/**
-     * Получение DAOFactory, brandService, modelService.
-     *//*
-
-    @BeforeClass
-    public static void setDAO() {
-        Properties dataBaseProperties = new Properties();
-        try (InputStream in = HibernateBrandServiceTest.class.getClassLoader().getResourceAsStream("app.properties")) {
-            dataBaseProperties.load(in);
-        } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
-        }
-        int factoryID = Integer.parseInt(dataBaseProperties.getProperty("factory"));
-        daoFactory = DAOFactory.getDAOFactory(factoryID);
-        brandService = daoFactory.getBrandService();
-        modelService = daoFactory.getModelService();
-    }
-
-    */
-/**
+    /**
      * Тест создания бренда.
-     *//*
-
+     */
     @org.junit.Test
     public void create() {
         Brand brand = new Brand();
@@ -88,11 +51,9 @@ public class HibernateBrandServiceTest {
         brandService.delete(brand);
     }
 
-    */
-/**
+    /**
      * Тест получения всех брендов.
-     *//*
-
+     */
     @org.junit.Test
     public void getAll() {
         Brand ford = new Brand();
@@ -107,11 +68,9 @@ public class HibernateBrandServiceTest {
         brandService.delete(bmw);
     }
 
-    */
-/**
+    /**
      * Тест обновления бренда.
-     *//*
-
+     */
     @org.junit.Test
     public void update() {
         Brand brand = new Brand();
@@ -123,11 +82,9 @@ public class HibernateBrandServiceTest {
         brandService.delete(brand);
     }
 
-    */
-/**
+    /**
      * Тест удаления бренда.
-     *//*
-
+     */
     @org.junit.Test
     public void delete() {
         Brand ford = new Brand();
@@ -138,11 +95,9 @@ public class HibernateBrandServiceTest {
         assertFalse(brandService.getAll().contains(ford));
     }
 
-    */
-/**
+    /**
      * Тест получения всех моделей одного бренда.
-     *//*
-
+     */
     @org.junit.Test
     public void getModels() {
         Brand ford = new Brand();
@@ -160,9 +115,9 @@ public class HibernateBrandServiceTest {
         modelService.create(mondeo);
 
         List<Model> models = Arrays.asList(focus, mondeo);
-        assertThat(models, is(brandService.getModels(ford.getId())));
+        assertThat(models, is(modelService.findAllByBrandID(ford.getId())));
         modelService.delete(mondeo);
         modelService.delete(focus);
         brandService.delete(ford);
     }
-}*/
+}

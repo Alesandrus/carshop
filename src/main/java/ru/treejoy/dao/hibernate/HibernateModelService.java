@@ -15,37 +15,51 @@ import ru.treejoy.model.brands.Model;
 import java.util.List;
 
 /**
- * Класс DAO для CRUD операций с моделью автомобиля в базе данных.
+ * Implementation of ModelService.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 30.01.2018
+ * @since 10.04.2018
  */
 @Service("modelService")
 @Repository
 @Transactional
 public class HibernateModelService implements ModelService {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Singleton object.
+     */
     private static final HibernateModelService HIBERNATE_MODEL_SERVICE = new HibernateModelService();
 
+    /**
+     * Model repository.
+     */
     @Autowired
     private ModelRepository modelRepository;
 
+    /**
+     * Private constructor.
+     */
     private HibernateModelService() {
     }
 
+    /**
+     * Getting instance of HibernateModelService.
+     *
+     * @return HibernateModelService.
+     */
     public static HibernateModelService getInstance() {
         return HIBERNATE_MODEL_SERVICE;
     }
 
     /**
-     * Создание модели в базе данных.
+     * Saves model.
      *
-     * @param entity модель.
+     * @param entity model.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -54,9 +68,9 @@ public class HibernateModelService implements ModelService {
     }
 
     /**
-     * Получение всех моделей из базы данных.
+     * Get all models.
      *
-     * @return список моделей.
+     * @return list of models.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -65,10 +79,10 @@ public class HibernateModelService implements ModelService {
     }
 
     /**
-     * Получение модели из базы данных по ID.
+     * Get model by ID.
      *
-     * @param id модели.
-     * @return модель.
+     * @param id model's.
+     * @return model's.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -77,9 +91,9 @@ public class HibernateModelService implements ModelService {
     }
 
     /**
-     * Обновить модель в базе данных.
+     * Update model.
      *
-     * @param entity модель.
+     * @param entity model.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -88,9 +102,9 @@ public class HibernateModelService implements ModelService {
     }
 
     /**
-     * Удалить модель из базы данных. Скорее всего каскадно не удалит.
+     * Delete model.
      *
-     * @param entity модель.
+     * @param entity model.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -98,6 +112,12 @@ public class HibernateModelService implements ModelService {
         modelRepository.delete(entity);
     }
 
+    /**
+     * Get all models by brand.
+     *
+     * @param id brand's.
+     * @return list of models.
+     */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Model> findAllByBrandID(long id) {

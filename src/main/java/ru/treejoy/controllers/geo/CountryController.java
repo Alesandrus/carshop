@@ -13,25 +13,30 @@ import ru.treejoy.model.geo.Country;
 import java.util.List;
 
 /**
- * Контроллер, отвечающий за получение всех стран.
+ * Controller for getting countries.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @RequestMapping("/getcountries")
 @Controller
 public class CountryController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CountryService.
+     */
     @Autowired
     private CountryService countryService;
 
     /**
-     * Отправка JSON со списком стран.
+     * Post JSON countries list..
+     *
+     * @return list of countries.
      */
     @PostMapping(produces = "application/json;charset=UTF-8")
     @ResponseBody

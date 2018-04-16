@@ -17,36 +17,53 @@ import ru.treejoy.model.User;
 import java.util.List;
 
 /**
- * Класс DAO для CRUD операций с пользователем в базе данных.
+ * Implementation of UserService.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 30.01.2018
+ * @since 10.04.2018
  */
 @Service("userService")
 @Repository
 @Transactional
 public class HibernateUserService implements UserService {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Singleton object.
+     */
     private static final HibernateUserService HIBERNATE_USER_SERVICE = new HibernateUserService();
 
+    /**
+     * User repository.
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Private constructor.
+     */
     private HibernateUserService() {
     }
 
+    /**
+     * Getting instance of HibernateUserService.
+     *
+     * @return HibernateUserService.
+     */
     public static HibernateUserService getInstance() {
         return HIBERNATE_USER_SERVICE;
     }
+
     /**
-     * Создание пользователя в базе данных.
+     * Saves user.
      *
-     * @param entity пользователь.
+     * @param entity user.
+     * @throws CreateLoginException if data base contains same login.
+     * @throws CreateEmailException if data base contains same email.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -64,9 +81,9 @@ public class HibernateUserService implements UserService {
     }
 
     /**
-     * Получение всех пользователей из базы данных.
+     * Get all users.
      *
-     * @return список пользователей.
+     * @return list of users.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -75,10 +92,10 @@ public class HibernateUserService implements UserService {
     }
 
     /**
-     * Получение пользователя из базы данных по ID.
+     * Get user by ID.
      *
-     * @param id пользователя.
-     * @return пользователя.
+     * @param id user's.
+     * @return user.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -87,9 +104,9 @@ public class HibernateUserService implements UserService {
     }
 
     /**
-     * Обновить пользователя в базе данных.
+     * Update user.
      *
-     * @param entity пользователь.
+     * @param entity user.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -98,9 +115,9 @@ public class HibernateUserService implements UserService {
     }
 
     /**
-     * Удалить пользователя из базы данных. Скорее всего каскадно не удалит.
+     * Delete user.
      *
-     * @param entity пользователь.
+     * @param entity user.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -109,11 +126,11 @@ public class HibernateUserService implements UserService {
     }
 
     /**
-     * Получение пользователя по логину и паролю.
+     * Get user by login and password.
      *
-     * @param login    логин.
-     * @param password пароль.
-     * @return пользователя.
+     * @param login    login.
+     * @param password password.
+     * @return user.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)

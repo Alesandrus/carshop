@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Сущность, обозначающая бренд.
+ * Entity representing car brand.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -24,13 +24,13 @@ import java.util.Objects;
 @Table(name = "brands")
 public class Brand {
     /**
-     * Конструктор по умолчанию.
+     * Default constructor.
      */
     public Brand() {
     }
 
     /**
-     * Id бренда.
+     * Brand Id.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,20 +38,20 @@ public class Brand {
     private Long id;
 
     /**
-     * Имя бренда.
+     * Brand name.
      */
     @Column(name = "brand", nullable = false)
     private String name;
 
     /**
-     * Список моделей одного бренда.
+     * Model list for brand.
      */
     @OneToMany(mappedBy = "brand")
     @JsonIgnore
     private List<Model> models = new ArrayList<>();
 
     /**
-     * Геттер ID.
+     * Getter for ID.
      *
      * @return ID.
      */
@@ -60,7 +60,7 @@ public class Brand {
     }
 
     /**
-     * Сеттер ID.
+     * Setter for ID.
      *
      * @param id .
      */
@@ -69,16 +69,16 @@ public class Brand {
     }
 
     /**
-     * Геттер имени.
+     * Getter for name.
      *
-     * @return имя.
+     * @return brand name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Сеттер имени.
+     * Setter for name.
      *
      * @param name .
      */
@@ -87,16 +87,16 @@ public class Brand {
     }
 
     /**
-     * Геттер списка моделей.
+     * Getter for models list.
      *
-     * @return список моделей.
+     * @return models list.
      */
     public List<Model> getModels() {
         return models;
     }
 
     /**
-     * Сеттер списка моделей.
+     * Setter for models list.
      *
      * @param models .
      */
@@ -128,7 +128,6 @@ public class Brand {
      */
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name);
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Сущность, обозначающая страну.
+ * Entity representing country.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -24,13 +24,13 @@ import java.util.Objects;
 @Table(name = "countries")
 public class Country {
     /**
-     * Конструктор по умолчанию.
+     * Default constructor.
      */
     public Country() {
     }
 
     /**
-     * ID.
+     * Country ID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,20 +38,20 @@ public class Country {
     private Long id;
 
     /**
-     * Название страны.
+     * Country name.
      */
     @Column(name = "country", nullable = false)
     private String name;
 
     /**
-     * Список стран.
+     * List of cities for this country.
      */
     @OneToMany(mappedBy = "country")
     @JsonIgnore
     private List<City> cities = new ArrayList<>();
 
     /**
-     * Геттер ID.
+     * Getter for ID.
      *
      * @return ID.
      */
@@ -60,7 +60,7 @@ public class Country {
     }
 
     /**
-     * Сеттер ID.
+     * Setter for ID.
      *
      * @param id .
      */
@@ -69,16 +69,16 @@ public class Country {
     }
 
     /**
-     * Геттер названия.
+     * Getter for name.
      *
-     * @return название.
+     * @return name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Сеттер названия страны.
+     * Setter for name.
      *
      * @param name .
      */
@@ -87,16 +87,16 @@ public class Country {
     }
 
     /**
-     * Геттер списка городов.
+     * Getter for cities list.
      *
-     * @return список городов.
+     * @return cities list.
      */
     public List<City> getCities() {
         return cities;
     }
 
     /**
-     * Сеттер списка городов.
+     * Setter for cities list.
      *
      * @param cities .
      */
@@ -106,6 +106,7 @@ public class Country {
 
     /**
      * Indicates whether some other object is "equal to" this one.
+     *
      * @param o other object.
      * @return if this object is the same as the obj argument.
      */
@@ -124,11 +125,11 @@ public class Country {
 
     /**
      * Returns a hash code value for the object.
+     *
      * @return a hash code value for this object.
      */
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name);
     }
 }

@@ -1,50 +1,53 @@
 package ru.treejoy.dao.services;
 
+import ru.treejoy.exceptions.CreateEmailException;
+import ru.treejoy.exceptions.CreateLoginException;
+
 import java.util.List;
 
 /**
- * Интерфейс сущности.
+ * Entity service.
  *
  * @param <E> element.
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface EntityService<E> {
     /**
-     * Создание сущности.
+     * Saves entity.
      *
-     * @param entity сущность.
+     * @param entity entity.
      * @throws Exception .
      */
     void create(E entity) throws Exception;
 
     /**
-     * Получение всех сущностей.
+     * Get all entities.
      *
-     * @return список сущностей.
+     * @return list of entities.
      */
     List<E> getAll();
 
     /**
-     * Получение сущности по ID.
+     * Get entity by ID.
      *
-     * @param id сущности.
-     * @return сущность.
+     * @param id entity's.
+     * @return entity.
      */
     E getByID(long id);
 
     /**
-     * Обновить сущность.
+     * Update entity.
      *
-     * @param entity сущность.
+     * @param entity entity.
      */
     void update(E entity);
 
     /**
-     * Удалить сущность.
+     * Delete entity.
      *
-     * @param entity сущность.
+     * @param entity entity.
      */
     void delete(E entity);
 }

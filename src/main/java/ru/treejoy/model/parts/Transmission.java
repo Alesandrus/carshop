@@ -3,7 +3,7 @@ package ru.treejoy.model.parts;
 import java.util.Locale;
 
 /**
- * Перечисление типов КПП.
+ * Enum for transmission types.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -11,29 +11,29 @@ import java.util.Locale;
  */
 public enum Transmission {
     /**
-     * Ручная.
+     * Manual.
      */
     MANUAL,
 
     /**
-     * Автоматическая.
+     * Automatic.
      */
     AUTOMATIC,
 
     /**
-     * Роботизированная.
+     * Robot.
      */
     ROBOT,
 
     /**
-     * Вариатор.
+     * Variator.
      */
     VARIATOR;
 
     /**
-     * Получение массива строк всех типов КПП(все буквы строчные).
+     * Gets array of string in lower case for all transmission types.
      *
-     * @return массив строк.
+     * @return array of string.
      */
     public static String[] toArrayString() {
         Transmission[] transmissions = Transmission.values();

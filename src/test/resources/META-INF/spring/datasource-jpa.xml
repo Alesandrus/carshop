@@ -17,10 +17,10 @@
                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://ec2-107-22-241-243.compute-1.amazonaws.com:5432/d8u61pcgba6oj?sslmode=require"/>
-        <property name="username" value="zsayaenwkxjuou"/>
-        <property name="password" value="9f46ff726ebfde764944fb4633442d48b5d6096e95291ba8ddd899dc994296a3"/>
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:mem:carshop;sql.enforce_size=false"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
         <property name="initialSize" value="5"/>
         <property name="maxIdle" value="10"/>
         <property name="minIdle" value="5"/>

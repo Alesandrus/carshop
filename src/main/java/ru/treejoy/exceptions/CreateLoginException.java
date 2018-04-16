@@ -1,7 +1,7 @@
 package ru.treejoy.exceptions;
 
 /**
- * Исключение, возникающее при указании уже имеющегося логина.
+ * Exception throws if storage contains same login.
  *
  * @author Alexander Ivanov
  * @version 1.0

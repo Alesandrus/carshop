@@ -3,7 +3,7 @@ package ru.treejoy.model.parts;
 import java.util.Locale;
 
 /**
- * Перечисление типов двигателей.
+ * Enum for motor types.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -11,34 +11,34 @@ import java.util.Locale;
  */
 public enum Motor {
     /**
-     * Бензин.
+     * Gasoline.
      */
     GASOLINE,
 
     /**
-     * Дизель.
+     * Diesel.
      */
     DIESEL,
 
     /**
-     * Гибрид.
+     * Hybrid.
      */
     HYBRID,
 
     /**
-     * Электрический.
+     * Electric.
      */
     ELECTRIC,
 
     /**
-     * Газ.
+     * Gas.
      */
     GAS;
 
     /**
-     * Получение массива строк всех типов двигателей(все буквы строчные).
+     * Gets array of string in lower case for all motor types.
      *
-     * @return массив строк.
+     * @return array of string.
      */
     public static String[] toArrayString() {
         Motor[] motors = Motor.values();

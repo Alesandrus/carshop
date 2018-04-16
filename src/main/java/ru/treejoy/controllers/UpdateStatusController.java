@@ -15,55 +15,31 @@ import ru.treejoy.dao.services.CarAdService;
 import java.io.IOException;
 
 /**
- * Сервлет, отвечающий за изменение статуса продажи.
+ * Controller for update sale status.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @Controller
 @RequestMapping("/setsale")
 public class UpdateStatusController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CarAdService.
+     */
     @Autowired
     private CarAdService carAdService;
 
     /**
-     * Изменение статуса.
+     * Updates car sale's status.
+     *
+     * @param json object for car ad.
      */
-    /*@Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String json = req.getParameter("param");
-        JsonFactory factory = new JsonFactory();
-        JsonParser parser = factory.createParser(json);
-        long id = -1;
-        boolean status = false;
-        while (!parser.isClosed()) {
-            JsonToken token = parser.nextToken();
-            if (JsonToken.FIELD_NAME.equals(token)) {
-                String field = parser.getCurrentName();
-                parser.nextToken();
-                if (field.equals("id")) {
-                    id = parser.getValueAsLong();
-                } else if (field.equals("status")) {
-                    status = parser.getValueAsBoolean();
-                }
-            }
-        }
-        if (id != -1) {
-            int factoryID = (Integer) getServletContext().getAttribute("factoryID");
-            DAOFactory daoFactory = DAOFactory.getDAOFactory(factoryID);
-            if (daoFactory != null) {
-                CarAdService carAdDAO = daoFactory.getCarAdService();
-                carAdDAO.updateStatus(id, status);
-            }
-        }
-    }*/
-
     @PostMapping
     public void updateStatus(@RequestParam("param") String json) {
         JsonFactory factory = new JsonFactory();

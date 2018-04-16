@@ -14,25 +14,31 @@ import ru.treejoy.model.geo.City;
 import java.util.List;
 
 /**
- * Контроллер, отвечающий за получение всех городов определенной страны.
+ * Controller for getting country's cities.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 12.04.2018
  */
 @RequestMapping("/getcities")
 @Controller
 public class CityController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CityService.
+     */
     @Autowired
     private CityService cityService;
 
     /**
-     * Отправка JSON со списком городов.
+     * Post JSON cities list.
+     *
+     * @param country country Id.
+     * @return list of cities.
      */
     @PostMapping(produces = "application/json;charset=UTF-8")
     @ResponseBody

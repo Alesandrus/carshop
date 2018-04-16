@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Сущность, обозначающая город.
+ * Entity representing city.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -27,13 +27,13 @@ import java.util.Objects;
 @Table(name = "cities")
 public class City {
     /**
-     * Конструктор по умолчанию.
+     * Default constructor.
      */
     public City() {
     }
 
     /**
-     * ID.
+     * City ID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,13 +41,13 @@ public class City {
     private Long id;
 
     /**
-     * Название города.
+     * City name.
      */
     @Column(name = "city", nullable = false)
     private String name;
 
     /**
-     * Страна, в которой расположен город.
+     * Country for this city.
      */
     @ManyToOne
     @JoinColumn(name = "country_id", nullable = false)
@@ -55,14 +55,14 @@ public class City {
     private Country country;
 
     /**
-     * Список объявлений, поданных в одном городе.
+     * Car ads list for this city.
      */
     @OneToMany(mappedBy = "city")
     @JsonIgnore
     private List<Ad> ad = new ArrayList<>();
 
     /**
-     * Геттер ID.
+     * Getter for ID.
      *
      * @return ID.
      */
@@ -71,7 +71,7 @@ public class City {
     }
 
     /**
-     * Сеттер ID.
+     * Setter for ID.
      *
      * @param id .
      */
@@ -80,16 +80,16 @@ public class City {
     }
 
     /**
-     * Геттер названия.
+     * Getter for name.
      *
-     * @return название.
+     * @return name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Сеттер названия.
+     * Setter for name.
      *
      * @param name .
      */
@@ -98,16 +98,16 @@ public class City {
     }
 
     /**
-     * Геттер страны.
+     * Getter for country.
      *
-     * @return страна.
+     * @return country.
      */
     public Country getCountry() {
         return country;
     }
 
     /**
-     * Сеттер страны.
+     * Setter for country.
      *
      * @param country .
      */
@@ -116,9 +116,9 @@ public class City {
     }
 
     /**
-     * Геттер списка объявлений.
+     * Getter for car ads list.
      *
-     * @return список объявлений.
+     * @return car ads.
      */
     public List<Ad> getAd() {
         return ad;
@@ -126,6 +126,7 @@ public class City {
 
     /**
      * Indicates whether some other object is "equal to" this one.
+     *
      * @param o other object.
      * @return if this object is the same as the obj argument.
      */
@@ -144,11 +145,11 @@ public class City {
 
     /**
      * Returns a hash code value for the object.
+     *
      * @return a hash code value for this object.
      */
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name);
     }
 }

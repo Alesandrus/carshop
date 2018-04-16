@@ -15,37 +15,51 @@ import ru.treejoy.model.geo.City;
 import java.util.List;
 
 /**
- * Класс DAO для CRUD операций с городом в базе данных.
+ * Implementation of CityService.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 30.01.2018
+ * @since 10.04.2018
  */
 @Service("cityService")
 @Repository
 @Transactional
 public class HibernateCityService implements CityService {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Singleton object.
+     */
     private static final HibernateCityService HIBERNATE_CITY_SERVICE = new HibernateCityService();
 
+    /**
+     * City repository.
+     */
     @Autowired
     private CityRepository cityRepository;
 
+    /**
+     * Private constructor.
+     */
     private HibernateCityService() {
     }
 
+    /**
+     * Getting instance of HibernateCityService.
+     *
+     * @return HibernateCityService.
+     */
     public static HibernateCityService getInstance() {
         return HIBERNATE_CITY_SERVICE;
     }
 
     /**
-     * Создание города в базе данных.
+     * Saves city.
      *
-     * @param entity город.
+     * @param entity city.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -54,9 +68,9 @@ public class HibernateCityService implements CityService {
     }
 
     /**
-     * Получение всех городов из базы данных.
+     * Get all cities.
      *
-     * @return список городов.
+     * @return list of cities.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -65,10 +79,10 @@ public class HibernateCityService implements CityService {
     }
 
     /**
-     * Получение города из базы данных по ID.
+     * Get city by ID.
      *
-     * @param id города.
-     * @return город.
+     * @param id city's.
+     * @return city.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -77,9 +91,9 @@ public class HibernateCityService implements CityService {
     }
 
     /**
-     * Обновить город в базе данных.
+     * Update city.
      *
-     * @param entity город.
+     * @param entity city.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -88,9 +102,9 @@ public class HibernateCityService implements CityService {
     }
 
     /**
-     * Удалить город из базы данных. Скорее всего каскадно не удалит.
+     * Delete city.
      *
-     * @param entity город.
+     * @param entity city.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -98,6 +112,12 @@ public class HibernateCityService implements CityService {
         cityRepository.delete(entity);
     }
 
+    /**
+     * Get all cities for country.
+     *
+     * @param id country's.
+     * @return list of cities.
+     */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public List<City> findAllByCountryId(long id) {

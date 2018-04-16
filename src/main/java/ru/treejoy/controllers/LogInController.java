@@ -13,25 +13,33 @@ import ru.treejoy.model.User;
 import javax.servlet.http.HttpSession;
 
 /**
- * Контроллер, отвечающий за аутентификацию пользователя.
+ * Controller for user authenticating.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @Controller
 @RequestMapping("/login")
 public class LogInController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * UserService.
+     */
     @Autowired
     private UserService userService;
 
     /**
-     * Аутентификация пользователя.
+     * User authenticating.
+     *
+     * @param login    of user.
+     * @param password of user.
+     * @param session  http session.
+     * @return part of url.
      */
     @PostMapping
     public String login(@RequestParam("login") String login, @RequestParam("password") String password,

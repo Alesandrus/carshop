@@ -15,37 +15,51 @@ import ru.treejoy.model.geo.Country;
 import java.util.List;
 
 /**
- * Класс DAO для CRUD операций со страной в базе данных.
+ * Implementation of CountryService.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 30.01.2018
+ * @since 10.04.2018
  */
 @Service("countryService")
 @Repository
 @Transactional
 public class HibernateCountryService implements CountryService {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Singleton object.
+     */
     private static final HibernateCountryService HIBERNATE_COUNTRY_SERVICE = new HibernateCountryService();
 
+    /**
+     * Country repository.
+     */
     @Autowired
     private CountryRepository countryRepository;
 
+    /**
+     * Private constructor.
+     */
     private HibernateCountryService() {
     }
 
+    /**
+     * Getting instance of HibernateCountryService.
+     *
+     * @return HibernateCountryService.
+     */
     public static HibernateCountryService getInstance() {
         return HIBERNATE_COUNTRY_SERVICE;
     }
 
     /**
-     * Создание страны в базе данных.
+     * Saves country.
      *
-     * @param entity страна.
+     * @param entity country.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -54,9 +68,9 @@ public class HibernateCountryService implements CountryService {
     }
 
     /**
-     * Получение всех стран из базы данных.
+     * Get all countries.
      *
-     * @return список стран.
+     * @return list of countries.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -65,10 +79,10 @@ public class HibernateCountryService implements CountryService {
     }
 
     /**
-     * Получение стран из базы данных по ID.
+     * Get country by ID.
      *
-     * @param id страны.
-     * @return страна.
+     * @param id country.
+     * @return country.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -77,9 +91,9 @@ public class HibernateCountryService implements CountryService {
     }
 
     /**
-     * Обновить страну в базе данных.
+     * Update country.
      *
-     * @param entity страна.
+     * @param entity country.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -88,9 +102,9 @@ public class HibernateCountryService implements CountryService {
     }
 
     /**
-     * Удалить страну из базы данных. Скорее всего каскадно не удалит.
+     * Delete country.
      *
-     * @param entity страна.
+     * @param entity country.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)

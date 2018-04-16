@@ -14,25 +14,32 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 
 /**
- * Контроллер, отвечающий за получение информации об объявлении.
+ * Controller for getting information about ad.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @RequestMapping("/getad")
 @Controller
 public class AddInfoController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CarAdService.
+     */
     @Autowired
     private CarAdService carAdService;
 
     /**
-     * Получение информации об объявлении и ее сохранение в запросе.
+     * Get information about ad.
+     *
+     * @param id      of car ad.
+     * @param request http request.
+     * @return part of url.
      */
     @GetMapping
     public String getAdInfo(@RequestParam(value = "id") String id, HttpServletRequest request) {

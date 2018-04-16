@@ -14,25 +14,35 @@ import ru.treejoy.model.ad.CarAd;
 import java.util.List;
 
 /**
- * Контроллер, отвечающий за получение всех объявления.
+ * Controller for getting all ads.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @RequestMapping("/getallads")
 @Controller
 public class AdsController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CarAdService.
+     */
     @Autowired
     private CarAdService carAdService;
 
     /**
-     * Отправка JSON со списком всех объявлений.
+     * Post JSON with list of all car ads. List getting from filters: by brand, by model, by presence photo,
+     * by posted today.
+     *
+     * @param brand id.
+     * @param model id.
+     * @param foto  true if need ad with photo.
+     * @param today true if posted today.
+     * @return list of ads.
      */
     @GetMapping(produces = "application/json;charset=UTF-8")
     @ResponseBody

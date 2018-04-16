@@ -3,7 +3,7 @@ package ru.treejoy.model.parts;
 import java.util.Locale;
 
 /**
- * Перечисление типов кузова.
+ * Enum for body types.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -11,32 +11,32 @@ import java.util.Locale;
  */
 public enum Body {
     /**
-     * Седан.
+     * Sedan.
      */
     SEDAN,
 
     /**
-     * Хэтчбэк.
+     * Hatchback.
      */
     HATCHBACK,
 
     /**
-     * Микроавтобус.
+     * Wagon.
      */
     WAGON,
 
     /**
-     * Внедорожник.
+     * Suv.
      */
     SUV,
 
     /**
-     * Кабриолет.
+     * Cabriolet.
      */
     CABRIOLET,
 
     /**
-     * Купе.
+     * Coupe.
      */
     COUPE,
 
@@ -46,29 +46,29 @@ public enum Body {
     LIMO,
 
     /**
-     * Минивэн.
+     * Minivan.
      */
     MINIVAN,
 
     /**
-     * Пикап.
+     * Pickup.
      */
     PICKUP,
 
     /**
-     * Фургон.
+     * Van.
      */
     VAN,
 
     /**
-     * Миниавтобус.
+     * Minibus.
      */
     MINIBUS;
 
     /**
-     * Получение массива строк всех типов кузова(все буквы строчные).
+     * Gets array of string in lower case for all body types.
      *
-     * @return массив строк.
+     * @return array of string.
      */
     public static String[] toArrayString() {
         Body[] bodies = Body.values();

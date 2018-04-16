@@ -1,7 +1,7 @@
 package ru.treejoy.exceptions;
 
 /**
- * Исключение, возникающее при указании уже имеющейся электронной почты.
+ * Exception throws if storage contains same email.
  *
  * @author Alexander Ivanov
  * @version 1.0

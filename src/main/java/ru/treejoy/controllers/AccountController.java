@@ -17,39 +17,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Контроллер, отвечающий за получение всех объявлений залогинившегося пользователя.
+ * Controller for getting all user's ads.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @Controller
 @RequestMapping("/account")
 public class AccountController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CarAdService.
+     */
     @Autowired
     private CarAdService carAdService;
 
     /**
-     * Проверяет залогинин ли пользователь.
+     * Check user's session.
+     *
+     * @param session http session.
+     * @return part of url.
      */
     @GetMapping
     public String UserIsValidate(HttpSession session) {
-        /*User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         if (user != null) {
             return "Account";
         } else {
             return "redirect:/index.jsp";
-        }*/
-        return  "Account";
+        }
     }
 
     /**
-     * Отправка JSON со списком объявлений пользователя.
+     * Post JSON with list of user's ads.
+     *
+     * @param session http session.
+     * @return List of car ads.
      */
     @PostMapping(produces = "application/json;charset=UTF-8")
     @ResponseBody

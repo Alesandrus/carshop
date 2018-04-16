@@ -14,36 +14,34 @@ import ru.treejoy.model.brands.Brand;
 import java.util.List;
 
 /**
- * Контроллер, отвечающий за получение всех брендов.
+ * Controller for getting all brands.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 09.04.2018
+ * @since 12.04.2018
  */
 @RequestMapping("/getbrands")
 @Controller
 public class BrandController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Brandservice.
+     */
     @Autowired
     private BrandService brandService;
 
     /**
-     * Отправка JSON со списком брендов.
+     * Post JSON brand list.
      *
+     * @return list of brands.
      */
     @PostMapping(produces = "application/json;charset=UTF-8")
     @ResponseBody
     public List<Brand> getBrands() {
-        return brandService.getAll();
-    }
-
-    @GetMapping(produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public List<Brand> getGetBrands() {
         return brandService.getAll();
     }
 }

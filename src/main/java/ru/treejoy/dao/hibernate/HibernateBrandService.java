@@ -15,37 +15,51 @@ import ru.treejoy.model.brands.Brand;
 import java.util.List;
 
 /**
- * Класс DAO для CRUD операций с автомобильным брендом в базе данных.
+ * Implementation of BrandService.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 30.01.2018
+ * @since 10.04.2018
  */
 @Service("brandService")
 @Repository
 @Transactional
 public class HibernateBrandService implements BrandService {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Singleton object.
+     */
     private static final HibernateBrandService HIBERNATE_BRAND_SERVICE = new HibernateBrandService();
 
+    /**
+     * Brand repository.
+     */
     @Autowired
     private BrandRepository brandRepository;
 
+    /**
+     * Private constructor.
+     */
     private HibernateBrandService() {
     }
 
+    /**
+     * Getting instance of HibernateBrandService.
+     *
+     * @return HibernateBrandService.
+     */
     public static HibernateBrandService getInstance() {
         return HIBERNATE_BRAND_SERVICE;
     }
 
     /**
-     * Создание автомобильного бренда в базе данных.
+     * Saves brand.
      *
-     * @param entity автомобильный бренд.
+     * @param entity brand.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -54,9 +68,9 @@ public class HibernateBrandService implements BrandService {
     }
 
     /**
-     * Получение всех автомобильных брендов из базы данных.
+     * Get all brands.
      *
-     * @return список автомобильных брендов.
+     * @return list of brands.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -65,10 +79,10 @@ public class HibernateBrandService implements BrandService {
     }
 
     /**
-     * Получение автомобильного бренда из базы данных по ID.
+     * Get brand by ID.
      *
-     * @param id автомобильного бренда.
-     * @return автомобильный бренд.
+     * @param id brand.
+     * @return brand.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -77,9 +91,9 @@ public class HibernateBrandService implements BrandService {
     }
 
     /**
-     * Обновить автомобильный бренд в базе данных.
+     * Update brand.
      *
-     * @param entity автомобильный бренд.
+     * @param entity brand.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -88,9 +102,9 @@ public class HibernateBrandService implements BrandService {
     }
 
     /**
-     * Удалить автомобильный бренд из базы данных. Скорее всего каскадно не удалит.
+     * Delete brand.
      *
-     * @param entity автомобильный бренд.
+     * @param entity brand.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)

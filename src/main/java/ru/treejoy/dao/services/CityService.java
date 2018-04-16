@@ -5,53 +5,59 @@ import ru.treejoy.model.geo.City;
 import java.util.List;
 
 /**
- * Абстрактный класс DAO для города.
+ * Service for city.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface CityService extends EntityService<City> {
     /**
-     * Создание сущности города.
+     * Saves city.
      *
-     * @param entity город.
+     * @param entity city.
      */
     @Override
     void create(City entity);
 
     /**
-     * Получение всех городов.
+     * Get all cities.
      *
-     * @return список городов.
+     * @return list of cities.
      */
     @Override
     List<City> getAll();
 
     /**
-     * Получение города по ID.
+     * Get city by ID.
      *
-     * @param id города.
-     * @return город.
+     * @param id city's.
+     * @return city.
      */
     @Override
     City getByID(long id);
 
     /**
-     * Обновить город.
+     * Update city.
      *
-     * @param entity города.
+     * @param entity city.
      */
     @Override
     void update(City entity);
 
     /**
-     * Удалить город.
+     * Delete city.
      *
-     * @param entity город.
+     * @param entity city.
      */
     @Override
     void delete(City entity);
 
+    /**
+     * Get all cities for country.
+     *
+     * @param id country's.
+     * @return list of cities.
+     */
     List<City> findAllByCountryId(long id);
 }

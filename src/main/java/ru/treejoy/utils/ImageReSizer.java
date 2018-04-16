@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
- * Класс для изменения размеров изображения.
+ * Class for changing image size.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -12,12 +12,12 @@ import java.awt.image.BufferedImage;
  */
 public class ImageReSizer {
     /**
-     * Изменение размеров изображения.
+     * Change image size.
      *
-     * @param targetWidth  значение ширины.
-     * @param targetHeight значение высоты.
-     * @param src          буферизированное изображение.
-     * @return буферизированное изображение.
+     * @param targetWidth  width value.
+     * @param targetHeight height value.
+     * @param src          buffered image.
+     * @return buffered image.
      */
     public BufferedImage resize(int targetWidth, int targetHeight,
                                 BufferedImage src) {

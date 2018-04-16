@@ -5,50 +5,50 @@ import ru.treejoy.model.brands.Brand;
 import java.util.List;
 
 /**
- * Сервис для марки автомобиля.
+ * Service for brand.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface BrandService extends EntityService<Brand> {
     /**
-     * Создание марки авто.
+     * Saves brand.
      *
-     * @param entity марка авто.
+     * @param entity brand.
      */
     @Override
     void create(Brand entity);
 
     /**
-     * Получение всех марок авто.
+     * Get all brands.
      *
-     * @return список марок авто.
+     * @return list of brands.
      */
     @Override
     List<Brand> getAll();
 
     /**
-     * Получение марки авто по ID.
+     * Get brand by ID.
      *
-     * @param id марки авто.
-     * @return марку авто.
+     * @param id brand.
+     * @return brand.
      */
     @Override
     Brand getByID(long id);
 
     /**
-     * Обновить марку авто.
+     * Update brand.
      *
-     * @param entity марки авто.
+     * @param entity brand.
      */
     @Override
     void update(Brand entity);
 
     /**
-     * Удалить марку авто.
+     * Delete brand.
      *
-     * @param entity марки авто.
+     * @param entity brand.
      */
     @Override
     void delete(Brand entity);

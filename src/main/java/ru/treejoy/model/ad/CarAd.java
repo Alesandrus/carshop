@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Сущность, обозначающая автомобильное объявление.
+ * Entity representing car ad.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -41,75 +41,75 @@ import javax.persistence.Table;
 @Table(name = "car_ads")
 public class CarAd extends Ad {
     /**
-     * Конструктор по умолчанию.
+     * Default constructor.
      */
     public CarAd() {
     }
 
     /**
-     * Модель автомобиля.
+     * Car model.
      */
     @ManyToOne
     @JoinColumn(name = "model_id", nullable = false)
     private Model model;
 
     /**
-     * Трансмиссия.
+     * Transmission type.
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "transmission", nullable = false)
     private Transmission transmission;
 
     /**
-     * Двигатель.
+     * Motor type.
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "motor", nullable = false)
     private Motor motor;
 
     /**
-     * Кузов.
+     * Body type.
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "body", nullable = false)
     private Body body;
 
     /**
-     * Год производства.
+     * Year of manufacture..
      */
     @Column(name = "year_of_manufacture", nullable = false)
     private int yearOfManufacture;
 
     /**
-     * Пробег.
+     * Car mileage.
      */
     @Column(name = "kilometrage", nullable = false)
     private int kilometrage;
 
     /**
-     * Мощность.
+     * Power.
      */
     @Column(name = "power", nullable = false)
     private int power;
 
     /**
-     * Привод.
+     * Wheel drive.
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "wheel_drive", nullable = false)
     private WheelDrive wheelDrive;
 
     /**
-     * Геттер модели.
+     * Getter for model.
      *
-     * @return модель.
+     * @return model.
      */
     public Model getModel() {
         return model;
     }
 
     /**
-     * Сеттер модели.
+     * Setter for model.
      *
      * @param model .
      */
@@ -118,16 +118,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттер трансмиссии.
+     * Getter for transmission.
      *
-     * @return трансмиссия.
+     * @return transmission.
      */
     public Transmission getTransmission() {
         return transmission;
     }
 
     /**
-     * Сеттер трансмиссии.
+     * Setter for transmission.
      *
      * @param transmission .
      */
@@ -136,16 +136,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттре двигателя.
+     * Getter for motor.
      *
-     * @return двигатель.
+     * @return motor.
      */
     public Motor getMotor() {
         return motor;
     }
 
     /**
-     * Сеттре двигателя.
+     * Setter for motor.
      *
      * @param motor .
      */
@@ -154,16 +154,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттер кузова.
+     * Getter for body.
      *
-     * @return кузов.
+     * @return body.
      */
     public Body getBody() {
         return body;
     }
 
     /**
-     * Сеттер кузова.
+     * Setter for body.
      *
      * @param body .
      */
@@ -172,16 +172,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттер года производства.
+     * Getter for year of manufacture.
      *
-     * @return год производства.
+     * @return year of manufacture.
      */
     public int getYearOfManufacture() {
         return yearOfManufacture;
     }
 
     /**
-     * Сеттер года производства.
+     * Setter for year of manufacture.
      *
      * @param yearOfManufacture .
      */
@@ -190,16 +190,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттер пробега.
+     * Getter for mileage.
      *
-     * @return пробег.
+     * @return mileage in kilometers.
      */
     public int getKilometrage() {
         return kilometrage;
     }
 
     /**
-     * Сеттер пробег.
+     * Setter for mileage.
      *
      * @param kilometrage .
      */
@@ -208,16 +208,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттер привода.
+     * Getter for wheel drive.
      *
-     * @return привод.
+     * @return wheel drive.
      */
     public WheelDrive getWheelDrive() {
         return wheelDrive;
     }
 
     /**
-     * Сеттер привода.
+     * Setter for wheel drive.
      *
      * @param wheelDrive .
      */
@@ -226,16 +226,16 @@ public class CarAd extends Ad {
     }
 
     /**
-     * Геттер мощности.
+     * Getter for power.
      *
-     * @return мощность.
+     * @return power.
      */
     public int getPower() {
         return power;
     }
 
     /**
-     * Сеттер мощности.
+     * Setter for power.
      *
      * @param power .
      */

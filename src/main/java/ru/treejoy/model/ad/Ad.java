@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Абстрактный сущность, обозначающая объявление.
+ * Abstract class representing an ad.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -34,13 +34,13 @@ import java.util.Objects;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Ad implements Serializable {
     /**
-     * Конструктор по умолчанию.
+     * Private constructor.
      */
     public Ad() {
     }
 
     /**
-     * ID объявления.
+     * Ad ID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,14 +48,14 @@ public abstract class Ad implements Serializable {
     private Long id;
 
     /**
-     * Город размещения объявления.
+     * City, where the ad is located.
      */
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     /**
-     * Список изображений объявления.
+     * Ad's images list.
      */
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "images")
@@ -64,39 +64,39 @@ public abstract class Ad implements Serializable {
     private List<String> images = new ArrayList<>();
 
     /**
-     * Цена.
+     * Price.
      */
     @Column(name = "price", nullable = false)
     private BigInteger price;
 
     /**
-     * Статус продажи (true - если продано).
+     * Sale status (true - if car is sold).
      */
     @Column(name = "status", nullable = false)
     private boolean status;
 
     /**
-     * Создатель объявления.
+     * Ad creator.
      */
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User creator;
 
     /**
-     * Описание объявления.
+     * Ad description.
      */
     @Column(name = "description", length = 3000)
     private String description;
 
     /**
-     * Время создания объявления.
+     * Time of ad creation.
      */
     @Column(name = "creation_time")
     @org.hibernate.annotations.CreationTimestamp
     private Timestamp created;
 
     /**
-     * Геттер ID.
+     * Getter ID.
      *
      * @return ID.
      */
@@ -105,7 +105,7 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Сеттер ID.
+     * Setter ID.
      *
      * @param id .
      */
@@ -114,16 +114,16 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Геттер города.
+     * Getter for city.
      *
-     * @return город.
+     * @return city.
      */
     public City getCity() {
         return city;
     }
 
     /**
-     * Сеттер города.
+     * Setter for citty.
      *
      * @param city .
      */
@@ -132,16 +132,16 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Геттер цены.
+     * Getter for price.
      *
-     * @return цену.
+     * @return price.
      */
     public BigInteger getPrice() {
         return price;
     }
 
     /**
-     * Сеттер цены.
+     * Setter for price.
      *
      * @param price .
      */
@@ -150,16 +150,16 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Геттер статуса.
+     * Getter for status.
      *
-     * @return статус.
+     * @return status.
      */
     public boolean isStatus() {
         return status;
     }
 
     /**
-     * Сеттер статуса.
+     * Setter for status.
      *
      * @param status .
      */
@@ -168,16 +168,16 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Геттер создателя.
+     * Getter for creator.
      *
-     * @return создатель.
+     * @return ad creator.
      */
     public User getCreator() {
         return creator;
     }
 
     /**
-     * Сеттер создателя.
+     * Setter for creator.
      *
      * @param creator .
      */
@@ -186,16 +186,16 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Геттер описания.
+     * Getter for description.
      *
-     * @return описание.
+     * @return description.
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Сеттер описания.
+     * Setter for description.
      *
      * @param description .
      */
@@ -204,34 +204,34 @@ public abstract class Ad implements Serializable {
     }
 
     /**
-     * Геттер списка изображений.
+     * Getter for images list.
      *
-     * @return список изображений.
+     * @return images list.
      */
     public List<String> getImages() {
         return images;
     }
 
     /**
-     * Сеттер списка изображений.
+     * Setter for images list.
      *
-     * @param images .
+     * @param images list.
      */
     public void setImages(List<String> images) {
         this.images = images;
     }
 
     /**
-     * Геттер времени создания.
+     * Getter for time of ad creation.
      *
-     * @return время создания.
+     * @return ad creation.
      */
     public Timestamp getCreated() {
         return created;
     }
 
     /**
-     * Сеттер времени создания.
+     * Setter for time of ad creation.
      *
      * @param created .
      */
@@ -241,6 +241,7 @@ public abstract class Ad implements Serializable {
 
     /**
      * Indicates whether some other object is "equal to" this one.
+     *
      * @param o other object.
      * @return if this object is the same as the obj argument.
      */
@@ -258,6 +259,7 @@ public abstract class Ad implements Serializable {
 
     /**
      * Returns a hash code value for the object.
+     *
      * @return a hash code value for this object.
      */
     @Override

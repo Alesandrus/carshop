@@ -3,7 +3,7 @@ package ru.treejoy.model.parts;
 import java.util.Locale;
 
 /**
- * Перечисление типов приводов.
+ * Enum for wheel drive types.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -11,24 +11,24 @@ import java.util.Locale;
  */
 public enum WheelDrive {
     /**
-     * Передний.
+     * Front.
      */
     FRONT,
 
     /**
-     * Задний.
+     * Rear.
      */
     REAR,
 
     /**
-     * Полный.
+     * AWD.
      */
     AWD;
 
     /**
-     * Получение массива строк всех типов приводов(все буквы строчные).
+     * Gets array of string in lower case for all wheel drive types.
      *
-     * @return массив строк.
+     * @return array of string.
      */
     public static String[] toArrayString() {
         WheelDrive[] wheelDrives = WheelDrive.values();

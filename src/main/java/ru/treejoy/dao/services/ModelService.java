@@ -5,53 +5,59 @@ import ru.treejoy.model.brands.Model;
 import java.util.List;
 
 /**
- * Абстрактный класс DAO для модели автомобиля.
+ * Service for model.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface ModelService extends EntityService<Model> {
     /**
-     * Создание модели авто.
+     * Saves model.
      *
-     * @param entity модель авто.
+     * @param entity model.
      */
     @Override
     void create(Model entity);
 
     /**
-     * Получение всех моделей авто.
+     * Get all models.
      *
-     * @return список моделей авто.
+     * @return list of models.
      */
     @Override
     List<Model> getAll();
 
     /**
-     * Получение модели авто по ID.
+     * Get model by ID.
      *
-     * @param id модели авто.
-     * @return модель авто.
+     * @param id model's.
+     * @return model's.
      */
     @Override
     Model getByID(long id);
 
     /**
-     * Обновить модель авто.
+     * Update model.
      *
-     * @param entity модели авто.
+     * @param entity model.
      */
     @Override
     void update(Model entity);
 
     /**
-     * Удалить модель авто.
+     * Delete model.
      *
-     * @param entity модели авто.
+     * @param entity model.
      */
     @Override
     void delete(Model entity);
 
+    /**
+     * Get all models by brand.
+     *
+     * @param id brand's.
+     * @return list of models.
+     */
     List<Model> findAllByBrandID(long id);
 }

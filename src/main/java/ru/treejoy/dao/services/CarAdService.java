@@ -5,78 +5,78 @@ import ru.treejoy.model.ad.CarAd;
 import java.util.List;
 
 /**
- * Абстрактный класс DAO для объявления о продаже авто.
+ * Service for car ad.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface CarAdService extends EntityService<CarAd> {
     /**
-     * Создание объявления о продаже авто.
+     * Saves car ad.
      *
-     * @param entity объявление о продаже авто.
+     * @param entity car ad.
      */
     @Override
     void create(CarAd entity);
 
     /**
-     * Получение всех объявлений о продаже авто.
+     * Get all car ads.
      *
-     * @return список объявлений о продаже авто.
+     * @return list of car ads.
      */
     @Override
     List<CarAd> getAll();
 
     /**
-     * Получение объявления о продаже авто по ID.
+     * Get car ad by ID.
      *
-     * @param id объявления о продаже авто.
-     * @return объявление о продаже авто.
+     * @param id car ad.
+     * @return car ad.
      */
     @Override
     CarAd getByID(long id);
 
     /**
-     * Обновить объявление о продаже авто.
+     * Update car ad.
      *
-     * @param entity объявление о продаже авто.
+     * @param entity car ad.
      */
     @Override
     void update(CarAd entity);
 
     /**
-     * Удалить объявление о продаже авто.
+     * Delete car ad.
      *
-     * @param entity объявление о продаже авто.
+     * @param entity for removing.
      */
     @Override
     void delete(CarAd entity);
 
     /**
-     * Обновить статус объявления о продаже авто.
+     * Update status sale.
      *
-     * @param id     объявление о продаже авто.
-     * @param status объявления.
+     * @param id car ad's.
+     * @param status true if car is sold.
      */
     void updateStatus(long id, boolean status);
 
     /**
-     * Получить все объявления одного пользователя.
+     * Get all car ads by user.
      *
-     * @param id пользователя.
-     * @return список объявлений.
+     * @param id user's.
+     * @return list of car ads.
      */
     List<CarAd> getAllByUserId(long id);
 
     /**
-     * Получить список объявлений, удовлетворяющих условиям.
+     * Get all car ads by brand, model, presence photo or posted today.
      *
-     * @param brandID      ID бренда.
-     * @param modelID      ID модели.
-     * @param onlyWithFoto только с фото.
-     * @param today        за сегодня.
-     * @return список объявлений.
+     * @param brandID      ID brand's.
+     * @param modelID      ID model's.
+     * @param onlyWithFoto true if presence photo.
+     * @param today        true if posted today.
+     * @return list of car ads.
      */
     List<CarAd> getAllFromFilter(long brandID, long modelID, boolean onlyWithFoto, boolean today);
 }

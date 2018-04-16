@@ -4,11 +4,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import ru.treejoy.dao.hibernate.*;
-import ru.treejoy.dao.services.*;
+import ru.treejoy.dao.services.BrandService;
+import ru.treejoy.dao.services.CarAdService;
+import ru.treejoy.dao.services.CityService;
+import ru.treejoy.dao.services.CountryService;
+import ru.treejoy.dao.services.ModelService;
+import ru.treejoy.dao.services.UserService;
 
 /**
- * ДАО-фабрика для работы с базой данных с помощью Hibernate.
+ * DAO-Factory for Hibernate.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -16,47 +20,65 @@ import ru.treejoy.dao.services.*;
  */
 public class HibernateDAOFactory extends DAOFactory {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
     /**
-     * Синглтон текущего класса.
+     * Singleton for class.
      */
     private static final HibernateDAOFactory FACTORY = new HibernateDAOFactory();
 
+    /**
+     * BrandService.
+     */
     @Autowired
     @Qualifier("brandService")
     private BrandService hibernateBrandService;
 
+    /**
+     * ModelService.
+     */
     @Autowired
     @Qualifier("modelService")
     private ModelService modelService;
 
+    /**
+     * CityService.
+     */
     @Autowired
     @Qualifier("cityService")
     private CityService cityService;
 
+    /**
+     * CountryService.
+     */
     @Autowired
     @Qualifier("countryService")
     private CountryService countryService;
 
+    /**
+     * UserService.
+     */
     @Autowired
     @Qualifier("userService")
     private UserService userService;
 
+    /**
+     * CarAdService.
+     */
     @Autowired
     @Qualifier("carAdService")
     private CarAdService carAdService;
 
     /**
-     * Приватный конструктор.
+     * Private constructor.
      */
     private HibernateDAOFactory() {
     }
 
     /**
-     * Получение экземпляра фабрики.
+     * Getting singleton instance.
      *
      * @return HibernateDAOFactory.
      */
@@ -65,9 +87,9 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для HibernateBrand.
+     * Getting BrandService.
      *
-     * @return HibernateBrandService.
+     * @return BrandService.
      */
     @Override
     public BrandService getBrandService() {
@@ -75,9 +97,9 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для HibernateCarAd.
+     * Getting CarAdService.
      *
-     * @return HibernateCarAdService.
+     * @return CarAdService.
      */
     @Override
     public CarAdService getCarAdService() {
@@ -85,9 +107,9 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для HibernateCity.
+     * Getting CityService.
      *
-     * @return HibernateCityAdDAO.
+     * @return CityService.
      */
     @Override
     public CityService getCityService() {
@@ -95,9 +117,9 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для HibernateCountry.
+     * Getting CountryService.
      *
-     * @return HibernateCountryService.
+     * @return CountryService.
      */
     @Override
     public CountryService getCountryService() {
@@ -105,9 +127,9 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для HibernateModel.
+     * Getting ModelService.
      *
-     * @return HibernateModelService.
+     * @return ModelService.
      */
     @Override
     public ModelService getModelService() {
@@ -115,9 +137,9 @@ public class HibernateDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для HibernateUser.
+     * Getting UserService.
      *
-     * @return HibernateUserService.
+     * @return UserService.
      */
     @Override
     public UserService getUserService() {

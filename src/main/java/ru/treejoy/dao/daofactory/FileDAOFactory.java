@@ -2,10 +2,15 @@ package ru.treejoy.dao.daofactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.treejoy.dao.services.*;
+import ru.treejoy.dao.services.BrandService;
+import ru.treejoy.dao.services.CarAdService;
+import ru.treejoy.dao.services.CityService;
+import ru.treejoy.dao.services.CountryService;
+import ru.treejoy.dao.services.ModelService;
+import ru.treejoy.dao.services.UserService;
 
 /**
- * ДАО-фабрика для работы с файловой системой.
+ * DAO-factory for file system (not realized).
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -13,23 +18,23 @@ import ru.treejoy.dao.services.*;
  */
 public class FileDAOFactory extends DAOFactory {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
     /**
-     * Синглтон-переменная.
+     * Singleton.
      */
     private static final FileDAOFactory FACTORY = new FileDAOFactory();
 
     /**
-     * Приватный конструктор.
+     * Private constructor.
      */
     private FileDAOFactory() {
     }
 
     /**
-     * Получение экземпляра фабрики.
+     * Getting singleton.
      *
      * @return FileDAOFactory.
      */
@@ -38,7 +43,7 @@ public class FileDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для Brand.
+     * Getting BrandService.
      *
      * @return BrandService.
      */
@@ -48,7 +53,7 @@ public class FileDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для CarAd.
+     * Getting CarAdService.
      *
      * @return CarAdService.
      */
@@ -58,7 +63,7 @@ public class FileDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для City.
+     * Getting CityService.
      *
      * @return CityService.
      */
@@ -68,7 +73,7 @@ public class FileDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для Country.
+     * Getting CountryService.
      *
      * @return CountryService.
      */
@@ -78,7 +83,7 @@ public class FileDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для Model.
+     * Getting ModelService.
      *
      * @return ModelService.
      */
@@ -88,7 +93,7 @@ public class FileDAOFactory extends DAOFactory {
     }
 
     /**
-     * Получение DAO для User.
+     * Getting UserService.
      *
      * @return UserService.
      */

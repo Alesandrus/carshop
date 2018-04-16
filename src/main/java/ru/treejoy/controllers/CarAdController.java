@@ -4,7 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ru.treejoy.dao.services.CarAdService;
 import ru.treejoy.dao.services.CityService;
@@ -33,31 +36,43 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Контроллер, отвечающий за создание объявления.
+ * Controller for creating car ad.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @Controller
 @RequestMapping("/createcarad")
 public class CarAdController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * CarAdService.
+     */
     @Autowired
     private CarAdService carAdService;
 
+    /**
+     * CityService.
+     */
     @Autowired
     private CityService cityService;
 
+    /**
+     * ModelService.
+     */
     @Autowired
     private ModelService modelService;
 
     /**
-     * Проверка залогинен ли пользователь.
+     * Check user session.
+     *
+     * @param session http session.
+     * @return part of url.
      */
     @GetMapping
     public String isLogin(HttpSession session) {
@@ -74,10 +89,25 @@ public class CarAdController {
     }
 
     /**
-     * Создание объявления. Загрузка изображений на сервер производится с помощью apache.commons.
+     * Ad creation. Image saves to file system in two copies with different sizes.
+     *
+     * @param session      http session.
+     * @param file         image.
+     * @param city         id.
+     * @param model        id.
+     * @param year         of manufacture.
+     * @param kilometers   on odometer.
+     * @param body         type of car.
+     * @param motor        type of car.
+     * @param power        of motor.
+     * @param transmission type of car.
+     * @param drive        type of car.
+     * @param description  about car.
+     * @param price        of car.
+     * @return part of url.
      */
     @PostMapping
-    public String addCarAd(HttpSession session, HttpServletRequest req,
+    public String addCarAd(HttpSession session,
                            @RequestParam(value = "photo", required = false) MultipartFile file,
                            @RequestParam(value = "cities") String city, @RequestParam(value = "models") String model,
                            @RequestParam(value = "year") String year, @RequestParam(value = "kilo") String kilometers,
@@ -140,11 +170,11 @@ public class CarAdController {
 
 
     /**
-     * Сохранение объявления.
+     * Сar ad creation.
      *
-     * @param creator    создатель.
-     * @param parameters ассоциативный массив с именами и содержанием полей формы.
-     * @param images     список загруженных картинок.
+     * @param creator    user.
+     * @param parameters map with parameters for the ad.
+     * @param images     list of uploaded images.
      */
 
     private void createCarAd(User creator, Map<String, String> parameters, List<String> images) {

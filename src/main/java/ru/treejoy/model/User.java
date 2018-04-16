@@ -3,6 +3,7 @@ package ru.treejoy.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ru.treejoy.model.ad.Ad;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Сущность, обозначающая пользователя.
+ * Entity representing user.
  *
  * @author Alexander Ivanov
  * @version 1.0
@@ -29,13 +30,13 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
     /**
-     * Конструктор по умолчанию.
+     * Default constructor.
      */
     public User() {
     }
 
     /**
-     * ID пользователя.
+     * User ID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +44,7 @@ public class User {
     private Long id;
 
     /**
-     * Логин.
+     * Login.
      */
     @Column(name = "login", nullable = false, unique = true)
     @Size(min = 3, max = 20, message = "Длина логина должна быть от 3 до 20 символов")
@@ -51,7 +52,7 @@ public class User {
     private String login;
 
     /**
-     * Пароль.
+     * Password.
      */
     @Column(name = "password", nullable = false)
     @JsonIgnore
@@ -61,7 +62,7 @@ public class User {
     private String password;
 
     /**
-     * Имя пользователя.
+     * User name.
      */
     @Column(name = "name", nullable = false)
     @Size(min = 3, max = 20, message = "Длина имени должна быть от 3 до 20 символов")
@@ -69,7 +70,7 @@ public class User {
     private String name;
 
     /**
-     * Фамилия пользователя.
+     * User surname.
      */
     @Column(name = "surname", nullable = false)
     @Size(min = 3, max = 20, message = "Длина фамилии должна быть от 3 до 20 символов")
@@ -77,7 +78,7 @@ public class User {
     private String surname;
 
     /**
-     * Электронная почта.
+     * Email.
      */
     @Column(name = "email", nullable = false, unique = true)
     @Email
@@ -88,14 +89,14 @@ public class User {
     private String email;
 
     /**
-     * Список объявлений.
+     * User list of ads.
      */
-    @OneToMany(mappedBy = "creator")
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Ad> ads = new ArrayList<>();
 
     /**
-     * Геттер ID.
+     * Getter for ID.
      *
      * @return ID.
      */
@@ -104,7 +105,7 @@ public class User {
     }
 
     /**
-     * Сеттер ID.
+     * Setter for ID.
      *
      * @param id .
      */
@@ -113,16 +114,16 @@ public class User {
     }
 
     /**
-     * Геттер логина.
+     * Getter for login.
      *
-     * @return логин.
+     * @return login.
      */
     public String getLogin() {
         return login;
     }
 
     /**
-     * Сеттер логина.
+     * Setter for login.
      *
      * @param login .
      */
@@ -131,16 +132,16 @@ public class User {
     }
 
     /**
-     * Геттер пароля.
+     * Getter for password.
      *
-     * @return пароль.
+     * @return password.
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * Сеттер пароля.
+     * Setter for password.
      *
      * @param password .
      */
@@ -149,16 +150,16 @@ public class User {
     }
 
     /**
-     * Геттер имени.
+     * Getter for name.
      *
-     * @return имя.
+     * @return name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Сеттер имени.
+     * Setter for name.
      *
      * @param name .
      */
@@ -167,16 +168,16 @@ public class User {
     }
 
     /**
-     * Геттер фамилии.
+     * Getter for surname.
      *
-     * @return фамилия.
+     * @return surname.
      */
     public String getSurname() {
         return surname;
     }
 
     /**
-     * Сеттер фамилии.
+     * Setter for surname.
      *
      * @param surname .
      */
@@ -185,27 +186,27 @@ public class User {
     }
 
     /**
-     * Геттер электроннй почты.
+     * Getter for email.
      *
-     * @return электронная почта.
+     * @return email.
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Сеттер электронная почта.
+     * Setter for email.
      *
-     * @param email электронная почта.
+     * @param email .
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * Геттер списка объявлений.
+     * Getter for ads list.
      *
-     * @return список объявлений.
+     * @return ads list.
      */
     public List<Ad> getAds() {
         return ads;
@@ -213,6 +214,7 @@ public class User {
 
     /**
      * Indicates whether some other object is "equal to" this one.
+     *
      * @param o other object.
      * @return if this object is the same as the obj argument.
      */
@@ -232,11 +234,11 @@ public class User {
 
     /**
      * Returns a hash code value for the object.
+     *
      * @return a hash code value for this object.
      */
     @Override
     public int hashCode() {
-
         return Objects.hash(id, login, password);
     }
 }

@@ -11,25 +11,31 @@ import ru.treejoy.dao.services.UserService;
 import javax.servlet.http.HttpSession;
 
 /**
- * Контроллер, отвечающий за выход из сессии.
+ * Controller for invalidate session.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 06.12.2017
+ * @since 12.04.2018
  */
 @Controller
 @RequestMapping("/logout")
 public class LogoutController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * UserService.
+     */
     @Autowired
     private UserService userService;
 
     /**
-     * Выход из сессии.
+     * Logout.
+     *
+     * @param session http session.
+     * @return part of url.
      */
     @GetMapping
     public String logout(HttpSession session) {

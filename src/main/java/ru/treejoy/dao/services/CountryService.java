@@ -5,50 +5,50 @@ import ru.treejoy.model.geo.Country;
 import java.util.List;
 
 /**
- * Абстрактный класс DAO для страны.
+ * Service for country.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface CountryService extends EntityService<Country> {
     /**
-     * Создание сущности страны.
+     * Saves country.
      *
-     * @param entity страна.
+     * @param entity country.
      */
     @Override
     void create(Country entity);
 
     /**
-     * Получение стран.
+     * Get all countries.
      *
-     * @return список стран.
+     * @return list of countries.
      */
     @Override
     List<Country> getAll();
 
     /**
-     * Получение страны по ID.
+     * Get country by ID.
      *
-     * @param id страны.
-     * @return страну.
+     * @param id country.
+     * @return country.
      */
     @Override
     Country getByID(long id);
 
     /**
-     * Обновить страну.
+     * Update country.
      *
-     * @param entity страна.
+     * @param entity country.
      */
     @Override
     void update(Country entity);
 
     /**
-     * Удалить страну.
+     * Delete country.
      *
-     * @param entity страна.
+     * @param entity country.
      */
     @Override
     void delete(Country entity);

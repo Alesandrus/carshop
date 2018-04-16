@@ -19,40 +19,57 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * Класс DAO для CRUD операций с автомобильным объявлением в базе данных.
+ * Implementation of CarAdService.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 30.01.2018
+ * @since 10.04.2018
  */
 @Service("carAdService")
 @Repository
 @Transactional
 public class HibernateCarAdService implements CarAdService {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * Singleton object.
+     */
     private static final HibernateCarAdService HIBERNATE_CAR_AD_SERVICE = new HibernateCarAdService();
 
+    /**
+     * Car ad repository.
+     */
     @Autowired
     private CarAdRepository carAdRepository;
 
+    /**
+     * JPA Entity manager.
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Private constructor.
+     */
     private HibernateCarAdService() {
     }
 
+    /**
+     * Getting instance of HibernateCarAdService.
+     *
+     * @return HibernateCarAdService.
+     */
     public static HibernateCarAdService getInstance() {
         return HIBERNATE_CAR_AD_SERVICE;
     }
 
     /**
-     * Создание автомобильного объявления в базе данных.
+     * Saves car ad.
      *
-     * @param entity автомобильное объявление.
+     * @param entity car ad.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -61,9 +78,9 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Получение всех автомобильных объявлений из базы данных.
+     * Get all car ads.
      *
-     * @return список автомобильных объявлений.
+     * @return list of car ads.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -72,10 +89,10 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Получение автомобильного объявления из базы данных по ID.
+     * Get car ad by ID.
      *
-     * @param id автомобильного объявления.
-     * @return автомобильное объявление.
+     * @param id car ad.
+     * @return car ad.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -84,9 +101,9 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Обновить автомобильное объявление в базе данных.
+     * Update car ad.
      *
-     * @param entity автомобильное объявление.
+     * @param entity car ad.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -95,9 +112,9 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Удалить автомобильное объявление из базы данных. Скорее всего каскадно не удалит.
+     * Delete car ad.
      *
-     * @param carAd автомобильное объявление.
+     * @param carAd for removing.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -106,9 +123,10 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Обновить статус автомобильного объявления.
+     * Update status sale.
      *
-     * @param id автомобильного объявления.
+     * @param id car ad's.
+     * @param status true if car is sold.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -121,10 +139,10 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Получить все объявления одного пользователя.
+     * Get all car ads by user.
      *
-     * @param id пользователя.
-     * @return список объявления пользователя.
+     * @param id user's.
+     * @return list of car ads.
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -133,13 +151,13 @@ public class HibernateCarAdService implements CarAdService {
     }
 
     /**
-     * Получить список объявлений, удовлетворяющих условиям.
+     * Get all car ads by brand, model, presence photo or posted today.
      *
-     * @param brandID      ID бренда.
-     * @param modelID      ID модели.
-     * @param onlyWithFoto только с фото.
-     * @param today        за сегодня.
-     * @return список объявлений.
+     * @param brandID      ID brand's.
+     * @param modelID      ID model's.
+     * @param onlyWithFoto true if presence photo.
+     * @param today        true if posted today.
+     * @return list of car ads.
      */
     @Override
     public List<CarAd> getAllFromFilter(long brandID, long modelID, boolean onlyWithFoto, boolean today) {

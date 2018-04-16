@@ -1,64 +1,68 @@
 package ru.treejoy.dao.services;
 
+import ru.treejoy.exceptions.CreateEmailException;
+import ru.treejoy.exceptions.CreateLoginException;
 import ru.treejoy.model.User;
 
 import java.util.List;
 
 /**
- * Абстрактный класс DAO для сущности пользователя.
+ * Service for user.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 31.01.2018
+ * @since 10.04.2018
  */
 public interface UserService extends EntityService<User> {
     /**
-     * Создание сущности пользователя.
+     * Saves user.
      *
-     * @param entity пользователь.
+     * @param entity user.
+     * @throws CreateLoginException if data base contains same login.
+     * @throws CreateEmailException if data base contains same email.
      */
     @Override
-    void create(User entity) throws Exception;
+    void create(User entity) throws CreateLoginException, CreateEmailException;
 
     /**
-     * Получение всех пользователей.
+     * Get all users.
      *
-     * @return список пользователей.
+     * @return list of users.
      */
     @Override
     List<User> getAll();
 
     /**
-     * Получение пользователя по ID.
+     * Get user by ID.
      *
-     * @param id пользователя.
-     * @return пользователя.
+     * @param id user's.
+     * @return user.
      */
     @Override
     User getByID(long id);
 
     /**
-     * Обновить пользователя.
+     * Update user.
      *
-     * @param entity пользователь.
+     * @param entity user.
      */
     @Override
     void update(User entity);
 
     /**
-     * Удалить пользователя.
+     * Delete user.
      *
-     * @param entity пользователь.
+     * @param entity user.
      */
     @Override
     void delete(User entity);
 
     /**
-     * Получить пользователя по логину и паролю.
+     * Get user by login and password.
      *
-     * @param login    логин.
-     * @param password пароль.
-     * @return пользователя.
+     * @param login    login.
+     * @param password password.
+     * @return user.
      */
     User getByLoginAndPassword(String login, String password);
 }

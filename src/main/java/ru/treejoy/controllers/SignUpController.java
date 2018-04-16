@@ -17,25 +17,31 @@ import ru.treejoy.model.User;
 import javax.validation.Valid;
 
 /**
- * Контроллер, отвечающий за регистрацию пользователя.
+ * Controller for user registration.
  *
  * @author Alexander Ivanov
  * @version 1.0
- * @since 11.02.2018
+ * @since 11.04.2018
  */
 @RequestMapping("/signup")
 @Controller
 public class SignUpController {
     /**
-     * Логгер.
+     * Logger.
      */
     private static final Logger LOGGER = LogManager.getLogger(Logger.class.getName());
 
+    /**
+     * UserService.
+     */
     @Autowired
     private UserService userService;
 
     /**
-     * Перенаправление запроса на страницу регистрации.
+     * Creates user and redirect to post request.
+     *
+     * @param model uiModel.
+     * @return part of url.
      */
     @GetMapping
     public String goToSignUp(Model model) {
@@ -44,7 +50,11 @@ public class SignUpController {
     }
 
     /**
-     * Регистрация пользователя.
+     * User registration.
+     *
+     * @param user          for registration.
+     * @param bindingResult binding results.
+     * @return part of url.
      */
     @PostMapping
     public String signUp(@Valid User user, BindingResult bindingResult) {
