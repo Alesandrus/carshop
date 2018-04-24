@@ -13,5 +13,10 @@ import java.util.List;
  * @since 10.04.2018
  */
 public interface ModelRepository extends CrudRepository<Model, Long> {
-    List<Model> findAllByBrand_Id(Long id);
+    /**
+     * Find all models by brand.
+     * @param id of brand.
+     * @return List of models.
+     */
+    List<Model> findAllByBrandId(Long id);
 }

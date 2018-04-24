@@ -13,5 +13,11 @@ import java.util.List;
  * @since 10.04.2018
  */
 public interface CarAdRepository extends CrudRepository<CarAd, Long> {
+    /**
+     * Find all ads by creator.
+     *
+     * @param id of user.
+     * @return List of car ads.
+     */
     List<CarAd> findAllByCreatorIdOrderByCreated(long id);
 }

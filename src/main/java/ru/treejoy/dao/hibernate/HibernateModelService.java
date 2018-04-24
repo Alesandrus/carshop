@@ -121,6 +121,6 @@ public class HibernateModelService implements ModelService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Model> findAllByBrandID(long id) {
-        return modelRepository.findAllByBrand_Id(id);
+        return modelRepository.findAllByBrandId(id);
     }
 }

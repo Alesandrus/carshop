@@ -13,5 +13,10 @@ import java.util.List;
  * @since 10.04.2018
  */
 public interface CityRepository extends CrudRepository<City, Long> {
+    /**
+     * Find all cities by country.
+     * @param id of country.
+     * @return List of cities.
+     */
     List<City> findAllByCountryId(long id);
 }

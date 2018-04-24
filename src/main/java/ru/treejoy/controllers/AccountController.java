@@ -44,7 +44,7 @@ public class AccountController {
      * @return part of url.
      */
     @GetMapping
-    public String UserIsValidate(HttpSession session) {
+    public String userIsValidate(HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             return "Account";
